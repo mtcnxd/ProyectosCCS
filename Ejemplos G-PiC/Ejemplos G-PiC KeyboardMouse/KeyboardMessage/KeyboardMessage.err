@@ -1,0 +1,4 @@
+>>> Warning 203 "D:\Dropbox\Electronics [Dropbox]\CCS\_Libraries\G-PiC Libraries [Basic]\usb\pic18_usb.c" Line 531(1,1): Condition always TRUE
+      Memory usage:   ROM=16%      RAM=12% - 16%
+      0 Errors,  1 Warnings.
+Build Successful.

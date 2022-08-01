@@ -1,0 +1,353 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019     @INTERRUPT_AREA
+01A     char_row
+01B     charsel
+01C     charpos
+01D     chardata
+01E-01F ddram
+020-023 plot_value32
+024     USTATCopy
+025     g_InBootloader
+026-029 plot_umsb
+02A-02D plot_lmsb
+02E-031 plot_ulsb
+032-035 plot_llsb
+036-039 USB_stack_status
+03A-03C USB_STRING_DESC_OFFSET
+03D     usb_state
+03E     __setup_0_tx_size
+03F     USB_address_pending
+040-041 usb_getdesc_ptr
+042-043 usb_getdesc_len
+044-045 USB_Interface
+046-04C usb_cdc_line_coding
+04D-04E usb_cdc_break
+04F-056 usb_cdc_encapsulated_cmd
+057-095 usb_cdc_put_buffer
+096     usb_cdc_put_buffer_nextin
+097-099 usb_cdc_get_buffer_status
+09A.0   usb_cdc_got_set_line_coding
+09B     usb_cdc_carrier
+09C     __usb_cdc_state
+09D     @READBITA.P1
+09D     nokia_gotoxy.xnokia
+09D     @WRITEBITA.P1
+09D     @PSTRINGC_140.@SCRATCH1
+09D     usb_detach.@SCRATCH1
+09D     usb_task.@SCRATCH1
+09D     MAIN.@SCRATCH1
+09D     @PSTRINGC_184.@SCRATCH1
+09E     nokia_gotoxy.ynokia
+09E     @WRITEBITA.P1
+09E     @delay_ms1.P2
+09E-09F @READBITA.P3
+09E     @PSTRINGC_140.@SCRATCH2
+09E     @PSTRINGC_184.@SCRATCH2
+09F     nokia_putc.cvar
+09F-0A0 @WRITEBITA.P1
+09F     usb_cdc_putc.c
+09F     nokia_gotoxy.@SCRATCH1
+0A0     usb_cdc_putc_fast.c
+0A0     nokia_write_command.bytefornokia_command
+0A0     nokia_write_data.bytefornokia_data
+0A0     table_to_nokialcd.@SCRATCH1
+0A1     nokia_write_dorc.bytefornokia
+0A1     _usb_cdc_putc_fast_noflush.c
+0A2     nokia_write_dorc.caa
+0A2.0   _usb_cdc_putc_fast_noflush.old_gie
+0A3     nokia_write_dorc.@SCRATCH1
+0A3     _usb_cdc_putc_fast_noflush.@SCRATCH1
+0A4     _usb_cdc_putc_fast_noflush.@SCRATCH2
+0B4     usb_isr.TRNAttempts
+0B5     usb_token_reset.i
+0B5     usb_isr_tok_dne.en
+0B5     usb_isr.@SCRATCH1
+0B6     usb_isr_tok_dne.pidKey
+0B6     usb_token_reset.@SCRATCH1
+0B6     usb_cdc_init.@SCRATCH1
+0B7     usb_isr_tok_out_dne.endpoint
+0B7     usb_isr_tok_in_dne.endpoint
+0B7     usb_unstall_ep.endpoint
+0B7     usb_isr_tkn_setup_StandardInterface.curr_config
+0B7     usb_set_configured.config
+0B7     usb_stall_ep.endpoint
+0B7     usb_endpoint_stalled.endpoint
+0B7     usb_isr_tok_dne.@SCRATCH1
+0B7     usb_token_reset.@SCRATCH2
+0B7     usb_cdc_init.@SCRATCH2
+0B8     usb_set_address.address
+0B8     usb_copy_desc_seg_to_ep.i
+0B8     usb_put_packet.endpoint
+0B8     usb_flush_out.endpoint
+0B8.0   usb_endpoint_stalled.direction
+0B8     usb_set_configured.en
+0B8.0   usb_unstall_ep.direction
+0B8     usb_rx_packet_size.endpoint
+0B8.0   usb_stall_ep.direction
+0B8     usb_isr_tkn_setup_StandardInterface.@SCRATCH1
+0B8     usb_cdc_init.@SCRATCH3
+0B9     usb_copy_desc_seg_to_ep.c
+0B9-0BA usb_put_packet.ptr
+0B9     usb_endpoint_stalled.st
+0B9-0BA usb_set_configured.addy
+0B9     usb_flush_out.tgl
+0B9     usb_rx_packet_size.@SCRATCH1
+0B9     usb_stall_ep.@SCRATCH1
+0B9     usb_unstall_ep.@SCRATCH1
+0B9     usb_isr_tkn_setup_StandardInterface.@SCRATCH2
+0B9     usb_cdc_init.@SCRATCH4
+0BA     usb_request_send_response.len
+0BA     usb_flush_out.i
+0BA     usb_rx_packet_size.@SCRATCH2
+0BA     usb_stall_ep.@SCRATCH2
+0BA     usb_unstall_ep.@SCRATCH2
+0BA     usb_endpoint_stalled.@SCRATCH1
+0BA     usb_copy_desc_seg_to_ep.@SCRATCH1
+0BB     usb_set_configured.new_uep
+0BB-0BC usb_put_packet.len
+0BB-0BC usb_flush_out.len
+0BB     usb_stall_ep.@SCRATCH3
+0BB     usb_unstall_ep.@SCRATCH3
+0BB     usb_endpoint_stalled.@SCRATCH2
+0BB     usb_copy_desc_seg_to_ep.@SCRATCH2
+0BC-0BD usb_set_configured.len
+0BC     usb_stall_ep.@SCRATCH4
+0BC     usb_unstall_ep.@SCRATCH4
+0BD     usb_put_packet.tgl
+0BD     usb_flush_out.@SCRATCH1
+0BE     usb_set_configured.i
+0BE-0BF usb_put_packet.buff_add
+0BE     usb_flush_out.@SCRATCH2
+0BF     usb_disable_endpoints.i
+0BF     usb_flush_out.@SCRATCH3
+0BF     usb_set_configured.@SCRATCH1
+0C0     usb_flush_in.endpoint
+0C0     usb_disable_endpoint.en
+0C0     usb_put_packet.@SCRATCH1
+0C0     usb_flush_out.@SCRATCH4
+0C0     usb_set_configured.@SCRATCH2
+0C1-0C2 usb_flush_in.len
+0C1     usb_endpoint_is_valid.endpoint
+0C1     usb_put_packet.@SCRATCH2
+0C1     usb_set_configured.@SCRATCH3
+0C1     usb_disable_endpoint.@SCRATCH1
+0C2.0   usb_endpoint_is_valid.direction
+0C2     usb_set_configured.@SCRATCH4
+0C2     usb_disable_endpoint.@SCRATCH2
+0C3     usb_flush_in.tgl
+0C3     usb_disable_endpoint.@SCRATCH3
+0C3     usb_endpoint_is_valid.@SCRATCH1
+0C4     usb_flush_in.i
+0C4     usb_disable_endpoint.@SCRATCH4
+0C5     usb_tbe.en
+0C5     usb_flush_in.@SCRATCH1
+0C6-0C7 @MUL1616.P1
+0C6     usb_tbe.@SCRATCH1
+0C6     usb_flush_in.@SCRATCH2
+0C7     usb_tbe.@SCRATCH2
+0C7     usb_flush_in.@SCRATCH3
+0C8-0C9 @MUL1616.P1
+0C8     usb_tbe.@SCRATCH3
+0C8     usb_flush_in.@SCRATCH4
+0CA     @MUL1616.@SCRATCH1
+400-522 g_USBRAM
+F66     UFRML
+F67     UFRMH
+F68     UIR
+F68.0   UIR_URST
+F68.1   UIR_UERR
+F68.2   UIR_ACTV
+F68.3   UIR_TRN
+F68.4   UIR_IDLE
+F68.5   UIR_STALL
+F68.6   UIR_SOF
+F69.0   UIE_URST
+F69     UIE
+F69.1   UIE_UERR
+F69.2   UIE_ACTV
+F69.3   UIE_TRN
+F69.4   UIE_IDLE
+F69.5   UIE_STALL
+F69.6   UIE_SOF
+F6A     UEIR
+F6B     UEIE
+F6C     U1STAT
+F6D     UCON
+F6D.1   UCON_SUSPND
+F6D.2   UCON_RESUME
+F6D.3   UCON_USBEN
+F6D.4   UCON_PKTDIS
+F6D.5   UCON_SE0
+F6D.6   UCON_PBRST
+F6E     UADDR
+F6F     UCFG
+F70-F7F g_UEP
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF2     INTCON
+FF2.7   INT_GIE
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+003464  @delay_ms1
+0020AE  TABLE5
+0021AE  TABLE6
+003284  nokia_init
+00325C  nokia_clean_ddram
+00321A  nokia_write_command
+003248  nokia_write_data
+0031F0  nokia_write_dorc
+00322E  nokia_gotoxy
+002422  @const160
+0033B0  @PSTRINGC_140
+0033A6  nokia_putc
+003342  table_to_nokialcd
+002432  @const165
+0022AE  usb_ep_tx_type
+0022CE  usb_ep_rx_type
+0022EE  usb_ep_tx_size
+00231E  usb_ep_rx_size
+00234E  USB_CONFIG_DESC
+0023A2  USB_NUM_INTERFACES
+0023B4  USB_CLASS_DESCRIPTORS
+0023CC  USB_DEVICE_DESC
+0023EE  USB_STRING_DESC
+0024BC  @MUL1616
+002D6C  usb_tbe
+0032C4  usb_detach
+0032EE  usb_attach
+0032E8  usb_init_cs
+003310  usb_task
+003334  usb_init
+002DBA  usb_flush_in
+002FB4  usb_put_packet
+002C8A  usb_flush_out
+002F1C  usb_rx_packet_size
+002A8E  usb_stall_ep
+002A36  usb_unstall_ep
+002AE8  usb_endpoint_stalled
+002F90  usb_set_address
+002764  usb_set_configured
+0024DA  usb_disable_endpoint
+00253A  usb_disable_endpoints
+0025EC  usb_clear_trn
+00315E  usb_isr
+002624  usb_isr_sof
+0025F0  usb_isr_rst
+002444  usb_init_ep0_setup
+002472  usb_isr_uerr
+00261A  usb_isr_uidle
+002434  usb_isr_activity
+002464  usb_isr_stall
+00262A  usb_request_send_response
+002BB0  usb_request_get_data
+002630  usb_request_stall
+003094  usb_isr_tok_dne
+0025C0  usb_token_reset
+00247A  usb_endpoint_is_valid
+003072  usb_isr_tok_in_dne
+002F7E  usb_isr_tok_out_dne
+002C58  usb_isr_tok_setup_dne
+002906  usb_isr_tkn_setup_StandardDevice
+0029AA  usb_isr_tkn_setup_StandardInterface
+002B52  usb_isr_tkn_setup_StandardEndpoint
+0026AC  usb_Get_Descriptor
+002FA6  usb_finish_set_address
+002634  usb_copy_desc_seg_to_ep
+002EC2  usb_isr_tok_out_cdc_control_dne
+002BB6  usb_isr_tkn_cdc
+002F66  usb_isr_tok_out_cdc_data_dne
+00306C  usb_isr_tok_in_cdc_data_dne
+00304A  usb_cdc_flush_out_buffer
+002550  usb_cdc_init
+002F58  usb_cdc_get_discard
+0033D2  _usb_cdc_putc_fast_noflush
+003402  usb_cdc_putc_fast
+003430  usb_cdc_putc
+00348E  MAIN
+0031DC  @const568
+0031E6  @const569
+003442  @PSTRINGC_184
+00348E  @cinit1
+0034A4  @cinit2
+
+Project Directory:
+    D:\Electronica\CCS\LCD Nokia\
+
+Project Files:
+    MainNokia.c                                             [17-dic-13 00:15  CRC=D8102B21]
+    C:\Program Files\PICC\drivers\G-PiC Lite!.c             [12-dic-13 10:14  CRC=75C148CC]
+    C:\Program Files\PICC\devices\18F4550.h                 [07-jul-13 20:46  CRC=DCD1BB11]
+    C:\Program Files\PICC\drivers\usb\usb_bootloader.h      [09-mar-12 01:05  CRC=933A968C]
+    C:\Program Files\PICC\drivers\Nokia3310.c               [16-dic-13 23:41  CRC=99A6F0F3]
+    C:\Program Files\PICC\drivers\usb_cdc.h                 [19-sep-12 11:36  CRC=9CCC0FC5]
+    C:\Program Files\PICC\drivers\pic18_usb.h               [30-jun-13 21:03  CRC=5446CC3D]
+    C:\Program Files\PICC\drivers\usb_hw_layer.h            [31-ago-10 14:26  CRC=8105D92F]
+    C:\Program Files\PICC\drivers\usb_desc_cdc.h            [27-oct-11 10:56  CRC=FD89BD44]
+    C:\Program Files\PICC\drivers\usb.h                     [02-abr-12 17:38  CRC=07D0253B]
+    C:\Program Files\PICC\drivers\usb.c                     [02-abr-12 17:38  CRC=8CCF24CB]
+    C:\Program Files\PICC\drivers\pic18_usb.c               [09-jul-12 14:21  CRC=5AECA3BF]
+    C:\Program Files\PICC\drivers\ctype.h                   [03-ene-08 13:55  CRC=2D1F019F]
+
+Source signature=10F119F5
+
+Units:
+    MainNokia (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      MainNokia.err
+    Ext Symbols: MainNokia.esym
+    INHX32:      MainNokia.hex
+    Symbols:     MainNokia.sym
+    List:        MainNokia.lst
+    Debug/COFF:  MainNokia.cof
+    Project:     MainNokia.PJT
+    Call Tree:   MainNokia.tre
+    Statistics:  MainNokia.STA

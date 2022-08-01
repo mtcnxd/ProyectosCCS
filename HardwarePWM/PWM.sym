@@ -1,0 +1,101 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 duty
+006     @PSTRINGCN_93.P1
+006     lcd_init.i
+006-007 @PRINTF_LU_93.P1
+006     MAIN.@SCRATCH1
+007     lcd_init.@SCRATCH1
+007     @PSTRINGCN_93.@SCRATCH1
+008     @PSTRINGCN_93.@SCRATCH2
+008     @PRINTF_LU_93.@SCRATCH1
+009     @PRINTF_LU_93.@SCRATCH2
+00A     @PRINTF_LU_93.@SCRATCH3
+00B     @PRINTF_LU_93.@SCRATCH4
+00C     @PRINTF_LU_93.@SCRATCH5
+00D     @PRINTF_LU_93.@SCRATCH6
+00E     @PRINTF_LU_93.@SCRATCH7
+00F     lcd_putc.c
+010     lcd_gotoxy.x
+010     @delay_ms1.P1
+011     lcd_gotoxy.y
+012     lcd_gotoxy.address
+013     lcd_gotoxy.@SCRATCH1
+014     lcd_send_byte.address
+015     lcd_send_byte.n
+016     lcd_read_byte.low
+016     lcd_send_byte.@SCRATCH1
+017     lcd_send_nibble.n
+017     lcd_read_byte.high
+018     lcd_read_byte.@SCRATCH1
+F81     lcd
+F8A     lcdlat
+F93     lcdtris
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000024  @delay_ms1
+000004  LCD_INIT_STRING
+000078  lcd_read_byte
+00006C  lcd_read_nibble
+00004C  lcd_send_nibble
+0000BE  lcd_send_byte
+0000F8  lcd_init
+000154  lcd_gotoxy
+000176  lcd_putc
+00029A  MAIN
+000018  @const109
+0001C6  @PSTRINGCN_93
+0001E6  @PRINTF_LU_93
+00029A  @cinit1
+0002B2  @cinit2
+
+Project Directory:
+    D:\Electronica\CCS\HardwarePWM\
+
+Project Files:
+    PWM.c                                                   [02-may-13 11:00  CRC=045CE5FB]
+    C:\Program Files\PICC\devices\18F2550.h                 [02-may-13 00:56  CRC=A46F8E4C]
+    C:\Program Files\PICC\drivers\lcd.c                     [23-ago-12 10:01  CRC=D28E8746]
+
+Source signature=4DE982D3
+
+Units:
+    PWM (main)
+
+Compiler Settings:
+    Processor:      PIC18F2550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      PWM.err
+    Ext Symbols: PWM.esym
+    INHX32:      PWM.hex
+    Symbols:     PWM.sym
+    List:        PWM.lst
+    Debug/COFF:  PWM.cof
+    Project:     PWM.PJT
+    Call Tree:   PWM.tre
+    Statistics:  PWM.STA

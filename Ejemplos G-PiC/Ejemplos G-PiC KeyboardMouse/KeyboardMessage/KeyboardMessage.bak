@@ -1,0 +1,48 @@
+/**
+   KeyboardMessage
+  
+   Cuando el botón BOOT es presionado, una cadena de caracteres es enviada a la 
+   PC como entrada de teclado. Puedes usar tu editor de texto favorito para ver
+   el resultado.
+
+   Se requiere que el idioma del teclado sea:
+   
+   INGLÉS (Estados Unidos - Internacional).
+    
+   --
+   Created: 02 ene 2013
+   By:      Ing. Ayrton Estrella Alcocer
+            G-PiC Electronics
+*/
+#include <G-PiC Lite!.c>
+#include <G-PiC KeyboardMouse.c>
+
+#define buttonPin Pin_A4
+
+void main() {
+   int counter = 0;
+   
+   KeyboardMouse_begin();
+      
+   while(true) {
+      if(digitalRead(buttonPin) == 0) {
+         counter ++;
+         
+         // Crea una variable tipo arreglo (array) lo suficientemente
+         // grande para almacenar todos los caracteres de la cadena.
+         char text[50] = "Has presionado el boton ";
+         keyboard_print(text);            // Imprime la cadena de caracteres
+         
+         // Convierte el valor de la variable a una cadena de caracteres y
+         // guarda el resultado en la variable <text>. Para mayor información,
+         // revisar el archivo de ayuda HELP.
+         sprintf(text, "%u", counter);
+         keyboard_print(text);            // Imprime el valor de counter
+         
+         text = " veces!";
+         keyboard_println(text);          // Imprime la cadena de caracteres
+         
+         delay_ms(500);
+      }
+   }
+}

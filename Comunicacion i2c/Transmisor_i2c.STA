@@ -1,0 +1,53 @@
+
+ROM used:   764 (2%)
+            768 (2%) including unused fragments
+
+            1 Average locations per line
+            4 Average locations per statement
+
+RAM used:   44 (2%) at main() level
+            47 (2%) worst case
+
+Stack used: 3/31 worst case (2 in main + 1 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   31    11   5  Transmisor_i2c.c
+  121    10   5  C:\Program Files\PICC\drivers\G-PiC Lite!.c
+  464     0   0  C:\Program Files\PICC\devices\18F4550.h
+  132     0   0  C:\Program Files\PICC\drivers\usb\usb_bootloader.h
+   97    13   6  C:\Program Files\PICC\drivers\Arduino Functions.c
+  338   170  83  C:\Program Files\PICC\drivers\analogWrite.c
+----- -----
+ 1183   204 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   3   1             @delay_ms1
+0    266  17   0  1663  3.8  Timer3_Interrupt
+0    108   7   1             @I2C_WRITE_1
+0     98   6   0   114  1.3  envio_I2C
+0     82   5   1    43  1.3  MAIN
+ Inline        0             @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              204
+    Comments                304
+    Volume (V)              2037
+    Difficulty (D)          6.5
+    Effort to implement (E) 13298
+    Time to implement (T)   12 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   25
+    Maintainability (MI)    72
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-01FFE     0  8192  
+02000-02006     4  4  
+02008-020AC   166  0  
+020AE-07FFE   594  23808  
+
+
+

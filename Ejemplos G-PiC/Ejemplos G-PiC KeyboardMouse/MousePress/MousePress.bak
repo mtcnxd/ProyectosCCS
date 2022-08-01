@@ -1,0 +1,24 @@
+/**
+
+*/
+#include <G-PiC Lite!.c>
+#include <G-PiC KeyboardMouse.c>
+
+#define pressPin     Pin_A4   // Switch utilizado para presionar el botón
+#define releasePin   Pin_A3   // Switch utilizado para libera el botón
+
+void main() {
+   KeyboardMouse_begin();              // Inicia la comunicación
+   
+   while(true) {
+      if(digitalRead(pressPin) == 0) {
+         mouse_press();                // Presiona el botón izquierdo del mouse
+         delay_ms(500);
+      }
+      
+      if(digitalRead(releasePin) == 0) {
+         mouse_release();              // Libera los botones del mouse
+         delay_ms(500);
+      }
+   }
+}

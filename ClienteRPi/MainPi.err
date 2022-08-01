@@ -1,0 +1,13 @@
+*** Error 18 "MainPi.c" Line 1(9,24): File can not be opened
+    Not in "C:\Program Files\PICC\devices\G-PiC Lite!.c"
+    Not in "C:\Program Files\PICC\drivers\G-PiC Lite!.c"
+    Not in project "D:\Dropbox\Electrónica\CCS\ClienteRPi\G-PiC Lite!.c"
+*** Error 100 "MainPi.c" Line 2(5,61): USE parameter value is out of range   Not a number: PIN_B0
+*** Error 128 "MainPi.c" Line 4(1,57): A #DEVICE required before this line
+*** Error 12 "MainPi.c" Line 7(11,15): Undefined identifier   true
+*** Error 12 "MainPi.c" Line 10(18,19): Undefined identifier  -- i2c_poll
+*** Error 12 "MainPi.c" Line 12(23,24): Undefined identifier  -- i2c_read
+*** Error 12 "MainPi.c" Line 14(26,27): Undefined identifier  -- output_toggle
+*** Error 12 "MainPi.c" Line 15(21,22): Undefined identifier  -- delay_ms
+      8 Errors,  0 Warnings.
+Build Failed.

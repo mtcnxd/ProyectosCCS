@@ -1,0 +1,29 @@
+/**
+   KeyboardTaskSwitcher
+   
+   Implementa el macro Alt + Tab para mandar el comando Task Switcher, el cual
+   cambia entre una ventana y otra.
+ 
+   Se requiere que el idioma del teclado sea:
+   
+   INGLÉS (Estados Unidos - Internacional).
+
+   --
+   Created: 02 ene 2013
+   By:      Ing. Ayrton Estrella Alcocer
+            G-PiC Electronics
+*/
+#include <G-PiC Lite!.c>
+#include <G-PiC KeyboardMouse.c>
+
+void main() {
+   KeyboardMouse_begin();                      // Inicializa el teclado USB
+   
+   while(true) {
+      if(digitalRead(Pin_A4) == 0) {      // Si la entrada del Pin_A4 es 0
+         keyboard_switch_task();          // Envía el comando Alt + Tab
+                                          // Luego libera las teclas presionadas
+         delay_ms(1000);
+      }
+   }
+}

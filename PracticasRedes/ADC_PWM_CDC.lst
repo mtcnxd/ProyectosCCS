@@ -1,0 +1,462 @@
+CCS PCH C Compiler, Version 4.140, 38880               14-oct-13 15:43
+
+               Filename:   D:\Electronica\CCS\PracticasRedes\ADC_PWM_CDC.lst
+
+               ROM used:   1132 bytes (3%)
+                           Largest free fragment is 23440
+               RAM used:   30 (1%) at main() level
+                           45 (2%) worst case
+               Stack:     2 worst case (0 in main + 2 for interrupts)
+
+*
+2000:  GOTO   2450
+*
+2008:  MOVWF  04
+200A:  MOVFF  FD8,05
+200E:  MOVFF  FE0,06
+2012:  MOVLB  0
+2014:  MOVFF  FE9,0C
+2018:  MOVFF  FEA,07
+201C:  MOVFF  FE1,08
+2020:  MOVFF  FE2,09
+2024:  MOVFF  FD9,0A
+2028:  MOVFF  FDA,0B
+202C:  MOVFF  FF3,12
+2030:  MOVFF  FF4,13
+2034:  MOVFF  FFA,14
+2038:  MOVFF  FF5,15
+203C:  MOVFF  FF6,16
+2040:  MOVFF  FF7,17
+2044:  MOVFF  00,0E
+2048:  MOVFF  01,0F
+204C:  MOVFF  02,10
+2050:  MOVFF  03,11
+2054:  BTFSS  FF2.4
+2056:  GOTO   2060
+205A:  BTFSC  FF2.1
+205C:  GOTO   23AE
+2060:  MOVFF  0E,00
+2064:  MOVFF  0F,01
+2068:  MOVFF  10,02
+206C:  MOVFF  11,03
+2070:  MOVFF  0C,FE9
+2074:  MOVFF  07,FEA
+2078:  BSF    07.7
+207A:  MOVFF  08,FE1
+207E:  MOVFF  09,FE2
+2082:  MOVFF  0A,FD9
+2086:  MOVFF  0B,FDA
+208A:  MOVFF  12,FF3
+208E:  MOVFF  13,FF4
+2092:  MOVFF  14,FFA
+2096:  MOVFF  15,FF5
+209A:  MOVFF  16,FF6
+209E:  MOVFF  17,FF7
+20A2:  MOVF   04,W
+20A4:  MOVFF  06,FE0
+20A8:  MOVFF  05,FD8
+20AC:  RETFIE 0
+.................... #include <G-PiC Lite!.c> 
+.................... #include <18F4550.h> 
+.................... //////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... #device PIC18F4550 
+.................... #list 
+....................  
+.................... //#ifdef ADC_10BITS   //Define ADC_10BITS antes de llamar la biblioteca para tener esta configuracion 
+.................... #device ADC = 10  
+.................... //#endif 
+.................... #fuses HSPLL,NOWDT,NOPROTECT,NOLVP,NODEBUG,USBDIV,PLL5,CPUDIV1,VREGEN,NOPBADEN 
+.................... #use delay(clock=48000000) 
+2386:  CLRF   FEA
+2388:  MOVLW  1E
+238A:  MOVWF  FE9
+238C:  MOVF   FEF,W
+238E:  BZ    23AC
+2390:  MOVLW  0F
+2392:  MOVWF  01
+2394:  CLRF   00
+2396:  DECFSZ 00,F
+2398:  BRA    2396
+239A:  DECFSZ 01,F
+239C:  BRA    2394
+239E:  MOVLW  8F
+23A0:  MOVWF  00
+23A2:  DECFSZ 00,F
+23A4:  BRA    23A2
+23A6:  NOP   
+23A8:  DECFSZ FEF,F
+23AA:  BRA    2390
+23AC:  RETURN 0
+.................... #ifndef NO_BOOTLOADER   //Define NO_BOOTLOADER antes de llamar la biblioteca para no cargar el bootloader 
+....................    #include <usb/usb_bootloader.h>  
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////                                                                   //// 
+.................... ////                     USB_BOOTLOADER.H                              //// 
+.................... ////                                                                   //// 
+.................... ////  This include file must be included by any application loaded     //// 
+.................... ////  by the example USB bootloader (ex_usb_bootloader                 //// 
+.................... ////                                                                   //// 
+.................... ////  The directives in this file relocate the reset and interrupt     //// 
+.................... ////  vectors as well as reserving space for the bootloader.           //// 
+.................... ////                                                                   //// 
+.................... ////  For more documentation see ex_usb_bootloader.c                   //// 
+.................... ////                                                                   //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////                                                                   //// 
+.................... //// VERSION HISTORY                                                   //// 
+.................... ////                                                                   //// 
+.................... //// March 5th, 2009:                                                  //// 
+.................... ////   Cleanup for Wizard.                                             //// 
+.................... ////   PIC24 Initial release.                                          //// 
+.................... ////                                                                   //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996,2009 Custom Computer Services           //// 
+.................... //// This source code may only be used by licensed users of the CCS    //// 
+.................... //// C compiler.  This source code may only be distributed to other    //// 
+.................... //// licensed users of the CCS C compiler.  No other use,              //// 
+.................... //// reproduction or distribution is permitted without written         //// 
+.................... //// permission.  Derivative programs created using this software      //// 
+.................... //// in object code form are not restricted in any way.                //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+....................  
+.................... //how big is the bootloader? 
+.................... //the bootloader will reside from address 0x0000 to this location.  the 
+.................... //application will then sit at this location+1 to the end of program memory. 
+.................... //#if defined(__DEBUG) 
+.................... #define LOADER_SIZE        (0x1FFF) 
+.................... //#else 
+.................... //#define LOADER_SIZE        (0x17FF) 
+.................... //#endif 
+....................  
+.................... //the loader and application need a common flag that determines if we are in 
+.................... //the bootloader or application, that way the ISR knows where to go.  this 
+.................... //is the location in ram that is reserved for this flag. 
+.................... #define LOC_IN_LOADER_FLAG  0x25 
+....................  
+.................... //// --- end configuration --- //////////////////////////////////////////// 
+....................  
+.................... #reserve LOC_IN_LOADER_FLAG 
+....................  
+.................... int8 g_InBootloader; 
+.................... #locate g_InBootloader=LOC_IN_LOADER_FLAG 
+....................  
+.................... #define LOADER_START       (0) 
+.................... #define LOADER_END         (LOADER_SIZE) 
+.................... #define APPLICATION_START  (LOADER_SIZE+1) 
+.................... #if defined(__USB_87J50__) 
+....................  #define APPLICATION_END    (getenv("PROGRAM_MEMORY")-9) //configuration bits 
+.................... #else 
+....................  #define APPLICATION_END    (getenv("PROGRAM_MEMORY")-1) 
+.................... #endif  
+.................... #define APPLICATION_ISR    (APPLICATION_START+8) 
+....................  
+.................... #ifdef _bootloader 
+....................  /* 
+....................   Provide an empty application, so if you load this .HEX file into the pic 
+....................   without an application this will prevent the pic from executing unknown code. 
+....................  */ 
+....................  #org APPLICATION_START,APPLICATION_START+0xF 
+....................  void BlankApplication(void)  
+....................  { 
+....................    while(TRUE); 
+....................  } 
+....................  
+....................  //we need to prevent the loader from using application space 
+....................  #if (APPLICATION_END > 0x10000) 
+....................    #org APPLICATION_START+0x10, 0xFFFF {} 
+....................    #if (APPLICATION_END > 0x20000) 
+....................       #org 0x10000, 0x1FFFF {} 
+....................       #org 0x20000, APPLICATION_END {} 
+....................    #else 
+....................       #org 0x10000, APPLICATION_END {} 
+....................    #endif 
+....................  #else 
+....................    #org APPLICATION_START+0x10, APPLICATION_END {} 
+....................  #endif 
+....................  
+....................    #define  USB_CONFIG_PID       0x0001 
+....................  
+....................    #define USB_STRINGS_OVERWRITTEN 
+....................    char USB_STRING_DESC_OFFSET[]={0,4,12}; 
+....................  
+....................    // Here is where the "CCS" Manufacturer string and "SERIAL DEMO" are stored. 
+....................    // Strings are saved as unicode. 
+....................    // These strings are mostly only displayed during the add hardware wizard. 
+....................    // Once the operating system drivers have been installed it will usually display 
+....................    // the name from the drivers .INF. 
+....................    char const USB_STRING_DESC[]={ 
+....................       //string 0 
+....................             4, //length of string index 
+....................             0x03, //USB_DESC_STRING_TYPE, //descriptor type 0x03 (STRING) 
+....................             0x09,0x04,   //Microsoft Defined for US-English 
+....................       //string 1  - manufacturer 
+....................             12, //length of string index 
+....................             0x03, //USB_DESC_STRING_TYPE, //descriptor type 0x03 (STRING) 
+....................             'G',0, 
+....................             '-',0, 
+....................             'P',0, 
+....................             'i',0, 
+....................             'C',0, 
+....................       //string 2 - product 
+....................             24, //length of string index 
+....................             0x03, //USB_DESC_STRING_TYPE, //descriptor type 0x03 (STRING) 
+....................             'G',0, 
+....................             '-',0, 
+....................             'P',0, 
+....................             'i',0, 
+....................             'C',0, 
+....................             ' ',0, 
+....................             'L',0, 
+....................             'i',0, 
+....................             't',0, 
+....................             'e',0, 
+....................             '!',0, 
+....................    }; 
+.................... #endif   //_bootloader 
+....................  
+.................... #ifndef _bootloader 
+....................  //in the application, this moves the reset and isr vector out of the bootload 
+....................  //space.  it then reserves the loader space from being used by the application. 
+....................  #build(reset=APPLICATION_START, interrupt=APPLICATION_ISR) 
+....................  #org 0, LOADER_END {} 
+.................... #endif 
+....................  
+.................... #endif 
+.................... //#include <Arduino Functions.c> 
+....................  
+.................... #define Reset_GPiC   reset_cpu   // Ejecuta un reset. Útil para finalizar la conexión USB 
+....................  
+.................... /** 
+.................... *  Recibe una variable con valores entre 0-255 y convierte los valores en un 
+.................... *  rango entre 0-100. 
+.................... *  Esta función es particularmente útil para asignar valores de porcentaje PWM 
+.................... */ 
+.................... int8 convert255to100(int8 _value) { 
+....................    return((_value*100.0)/255.0); 
+.................... } 
+....................  
+.................... /** 
+.................... *  Recibe una variable con valores entre 0-255 y lo convierte a su equivalente 
+.................... *  en voltaje entre 0V y 5V. Util para variables que contengan valores analógicos 
+.................... */ 
+.................... float convertDECtoVolt(float _value) { 
+....................    _value = (_value*5)/255; 
+....................    return(_value); 
+.................... } 
+....................  
+.................... /** 
+.................... *  Convierte el valor analogico leido de un LM35 y lo convierte en su equivalente 
+.................... *  en grados. 
+.................... */ 
+.................... float convertDECtoDegree(float _value) { 
+....................    _value = 100*(_value*5)/255; 
+....................    return(_value); 
+.................... } 
+....................  
+.................... void output_pins(int16 _pins[], int _pinCount, int16 _value) { 
+....................    int8 _i; 
+....................    for(_i = 0; _i < _pinCount; _i++) { 
+....................       output_bit(_pins[_i], bit_test(_value, _i)); 
+....................    } 
+.................... } 
+....................  
+.................... #define PinA0 0 
+.................... #define PinA1 1 
+.................... #define PinA2 2 
+.................... #define PinA3 3 
+.................... #define PinA4 4 
+.................... #define PinA5 5 
+.................... #define PinE0 6 
+.................... #define PinE1 7 
+.................... #define PinE2 8 
+.................... #define PinC0 9 
+.................... #define PinC1 10 
+.................... #define PinC2 11 
+.................... #define PinD0 12 
+.................... #define PinD1 13 
+.................... #define PinD2 14 
+.................... #define PinD3 15 
+.................... #define PinC6 16 
+.................... #define PinC7 17 
+.................... #define PinD4 18 
+.................... #define PinD5 19 
+.................... #define PinD6 20 
+.................... #define PinD7 21 
+.................... #define PinB0 22 
+.................... #define PinB1 23 
+.................... #define PinB2 24 
+.................... #define PinB3 25 
+.................... #define PinB4 26 
+.................... #define PinB5 27 
+.................... #define PinB6 28 
+.................... #define PinB7 29 
+.................... #define _numberPins {Pin_A0, Pin_A1, Pin_A2, Pin_A3, Pin_A4, Pin_A5, \ 
+....................                      Pin_E0, Pin_E1, Pin_E2, Pin_C0, Pin_C1, Pin_C2, \ 
+....................                      Pin_D0, Pin_D1, Pin_D2, Pin_D3, Pin_C6, Pin_C7, \ 
+....................                      Pin_D4, Pin_D5, Pin_D6, Pin_D7, Pin_B0, Pin_B1, \ 
+....................                      Pin_B2, Pin_B3, Pin_B4, Pin_B5, Pin_B6, Pin_B7} 
+....................  
+.................... int16 analogRead(int _Channel){ 
+....................    int16 _adcReading; 
+....................     
+....................    setup_adc(ADC_CLOCK_INTERNAL); 
+*
+20AE:  MOVF   FC0,W
+20B0:  ANDLW  C0
+20B2:  IORLW  07
+20B4:  MOVWF  FC0
+20B6:  BSF    FC0.7
+20B8:  BSF    FC2.0
+....................    setup_adc_ports(ALL_ANALOG); 
+20BA:  MOVF   FC1,W
+20BC:  ANDLW  C0
+20BE:  MOVWF  FC1
+....................    set_adc_channel(_Channel); 
+20C0:  RLCF   1D,W
+20C2:  MOVWF  00
+20C4:  RLCF   00,F
+20C6:  MOVLW  FC
+20C8:  ANDWF  00,F
+20CA:  MOVF   FC2,W
+20CC:  ANDLW  C3
+20CE:  IORWF  00,W
+20D0:  MOVWF  FC2
+....................    delay_us(10); 
+20D2:  MOVLW  27
+20D4:  MOVWF  00
+20D6:  DECFSZ 00,F
+20D8:  BRA    20D6
+20DA:  BRA    20DC
+....................     
+....................    _adcReading=read_adc(); 
+20DC:  BSF    FC2.1
+20DE:  BTFSC  FC2.1
+20E0:  BRA    20DE
+20E2:  MOVFF  FC3,1E
+20E6:  MOVFF  FC4,1F
+....................     
+....................    setup_adc_ports(NO_ANALOGS); 
+20EA:  MOVF   FC1,W
+20EC:  ANDLW  C0
+20EE:  IORLW  0F
+20F0:  MOVWF  FC1
+....................    return(_adcReading); 
+20F2:  MOVFF  1E,01
+20F6:  MOVFF  1F,02
+.................... } 
+20FA:  GOTO   23B2 (RETURN)
+....................  
+.................... void digitalWrite2(int8 _pin, int1 _state){ 
+....................    const int16 _pins[30] = _numberPins; 
+....................    output_bit(_pins[_pin], _state); 
+.................... } 
+....................  
+.................... int1 digitalRead2(int8 _pin){ 
+....................    const int16 _pins[30] = _numberPins; 
+....................    return input(_pins[_pin]); 
+.................... } 
+....................  
+....................  
+.................... float retardo; 
+....................  
+.................... #INT_EXT 
+.................... void interrupt_ext0() { 
+....................    retardo = analogRead(0); 
+*
+23AE:  CLRF   1D
+23B0:  BRA    20AE
+23B2:  MOVFF  02,1E
+23B6:  MOVFF  01,1D
+23BA:  BRA    20FE
+23BC:  MOVFF  03,1C
+23C0:  MOVFF  02,1B
+23C4:  MOVFF  01,1A
+23C8:  MOVFF  00,19
+....................    retardo = (retardo/1024) * 8; 
+23CC:  MOVFF  1C,20
+23D0:  MOVFF  1B,1F
+23D4:  MOVFF  1A,1E
+23D8:  MOVFF  19,1D
+23DC:  CLRF   24
+23DE:  CLRF   23
+23E0:  CLRF   22
+23E2:  MOVLW  89
+23E4:  MOVWF  21
+23E6:  BRA    2136
+23E8:  MOVFF  00,1D
+23EC:  MOVFF  01,1E
+23F0:  MOVFF  02,1F
+23F4:  MOVFF  03,20
+23F8:  MOVFF  03,24
+23FC:  MOVFF  02,23
+2400:  MOVFF  01,22
+2404:  MOVFF  00,21
+2408:  CLRF   29
+240A:  CLRF   28
+240C:  CLRF   27
+240E:  MOVLW  82
+2410:  MOVWF  26
+2412:  BRA    2292
+2414:  MOVFF  03,1C
+2418:  MOVFF  02,1B
+241C:  MOVFF  01,1A
+2420:  MOVFF  00,19
+....................    
+....................    delay_ms(retardo);   
+2424:  MOVFF  1A,1D
+2428:  INCF   1D,F
+242A:  DECF   1D,F
+242C:  BTFSC  FD8.2
+242E:  BRA    2436
+2430:  SETF   1E
+2432:  RCALL  2386
+2434:  BRA    242A
+2436:  MOVFF  19,1E
+243A:  RCALL  2386
+....................    output_high(PIN_D2);    
+243C:  BCF    F95.2
+243E:  BSF    F8C.2
+....................    delay_ms(1); 
+2440:  MOVLW  01
+2442:  MOVWF  1E
+2444:  RCALL  2386
+....................    output_low(PIN_D2); 
+2446:  BCF    F95.2
+2448:  BCF    F8C.2
+.................... } 
+....................  
+244A:  BCF    FF2.1
+244C:  GOTO   2060
+.................... void main(void) { 
+2450:  CLRF   FF8
+2452:  BCF    FD0.7
+2454:  BSF    07.7
+2456:  CLRF   FEA
+2458:  CLRF   FE9
+245A:  MOVF   FC1,W
+245C:  ANDLW  C0
+245E:  IORLW  0F
+2460:  MOVWF  FC1
+2462:  MOVLW  07
+2464:  MOVWF  FB4
+....................    enable_interrupts( GLOBAL ); 
+2466:  MOVLW  C0
+2468:  IORWF  FF2,F
+....................    enable_interrupts( INT_EXT ); 
+246A:  BSF    FF2.4
+....................  
+....................    while (true) { 
+....................       // Se trabaja solo con interrupcion del B0. 
+....................    } 
+246C:  BRA    246C
+.................... } 
+246E:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CE24   PLL5 CPUDIV1 USBDIV HSPLL FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8500   CCP2C1 NOPBADEN LPT1OSC MCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

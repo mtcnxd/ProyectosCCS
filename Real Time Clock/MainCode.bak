@@ -1,0 +1,38 @@
+#include <G-PiC Lite!.c>
+#include <ds1307.c>
+#include <usb_cdc.h>
+#use rs232(UART1, baud=9600, DISABLE_INTS, errors)
+
+int sec, min, hrs;
+int day, month, year, dow; 
+
+void alarma(){
+   output_high(PIN_A3);
+   delay_ms(2000);
+   output_low(PIN_A3);
+}
+
+/*************************** FUNCIÓN PRINCIPAL ********************************/
+void main()
+{
+   usb_cdc_init ();
+   usb_init();
+   ds1307_init(0);
+   
+   // Descomentar para configurar la hora y fecha
+   ds1307_set_date_time(25,9,14,2,20,33,00);
+   
+   while (true)
+   {
+      ds1307_get_date(day, month,year,dow);
+      ds1307_get_time(hrs, min, sec);
+      printf (usb_cdc_putc, "\n\r");
+      printf(usb_cdc_putc, "La hora es: \n\r");      
+      printf (usb_cdc_putc, "Hora:  %02d:%02d.%02d\n\r", hrs, min, sec);
+      printf ("Hora:  %02d:%02d.%02d\n\r", hrs, min, sec);
+      printf (usb_cdc_putc, "Fecha: %02d/%02d/%02d\n\r", day, month, year);
+      printf ("Fecha: %02d/%02d/%02d\n\r", day, month, year);
+      delay_ms (3000);
+   }
+}
+

@@ -1,0 +1,12 @@
+Este ejemplo crea un puerto COM virtual en windows.
+
+Despues de descargar el archivo hex al entrenador, windows lo detectará como nuevo dispositivo usb,
+en ese momento pedira que se instale un driver el cual debera instalarse de forma manual. Este driver
+se en encuentra en la carpeta del ejemplo con varias carpetas dependiendo la versión de windows
+
+Una vez instalado el driver, windows instalara un puerto serial COM.
+
+A través de algun programa como hyperterminal de windows podras conectarte al puerto serial COM dado de alta
+Selecciona la velocidad de transmisión que gustes, 8 bits de datos, 1bit de paro, sin paridad
+El programa del PIC cuenta con la función autobaudrate por lo que no importa a que velocidad de transmisión
+ajustes el puerto COM de windows, el PIC la detectara y se ajustara a dicha velocidad automaticamente.

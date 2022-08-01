@@ -1,0 +1,31 @@
+#include <G-PIC Lite!.c>
+#include <usb_cdc.h>
+#define ledPin PIN_A4
+
+char Option;
+
+void main () {
+   usb_init();
+
+   while (true) {
+      if (usb_enumerated()){ 
+         if (usb_cdc_kbhit()){
+            Option = usb_cdc_getc();
+            
+            switch(Option){
+               case 'a':
+                  output_low(ledPin);
+                  printf(usb_cdc_putc,"LED Encendido\n\r");
+               break;
+               
+               case 'b':
+                  output_high(ledPin);
+                  printf(usb_cdc_putc,"LED Apagado\n\r");
+               break;                
+            }
+         }
+      }
+   }
+}
+
+

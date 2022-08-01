@@ -1,0 +1,4 @@
+>>> Warning 203 "C:\Program Files\PICC\drivers\pic18_usb.c" Line 616(1,1): Condition always TRUE
+*** Error 51 "Main.c" Line 15(37,38): A numeric expression must appear here
+      1 Errors,  1 Warnings.
+Build Failed.

@@ -1,0 +1,9 @@
+ÀÄTransmisor_i2c
+   ÃÄMAIN  0/82  Ram=1
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄenvio_I2C  0/98  Ram=0
+   ³  ³  ÃÄ@I2C_WRITE_1  0/108  Ram=1
+   ³  ³  ÃÄ@I2C_WRITE_1  0/108  Ram=1
+   ³  ³  ÀÄ@delay_ms1  0/40  Ram=1
+   ³  ÀÄ@delay_ms1  0/40  Ram=1
+   ÀÄTimer3_Interrupt  0/266  Ram=0

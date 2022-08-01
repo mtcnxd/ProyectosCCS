@@ -1,0 +1,46 @@
+#include <G-PIC Lite!.c>
+#fuses hspll,nowdt,nomclr,noprotect,nolvp,nodebug,usbdiv,pll1,cpudiv1,vregen
+#use delay(clock=48M)
+#include <pic18_usb.h>
+#include <usb_desc_hid.h>
+#include <usb.c>
+
+#define USB_CONFIG_HID_RX_SIZE   8
+#define USB_CONFIG_HID_TX_SIZE   8
+#define USB_HID_DEVICE TRUE
+#define USB_EP1_TX_ENABLE USB_ENABLE_INTERRUPT
+#define USB_EP1_TX_SIZE 8
+#define USB_EP1_RX_ENABLE USB_ENABLE_INTERRUPT
+#define USB_EP1_RX_SIZE 8
+
+//int out_data[8]={0,0,0,0,0,0,0,1};
+
+byte infoData[15] = {00000001,0000010,00000011,00000100,
+                     00000101,0000110,00000111,00001000,
+                     00001001,0001010,00001011,00001100,
+                     00001111,0000000,00100000};
+
+void main()
+{
+   usb_init ();
+   enable_interrupts (global);
+   enable_interrupts (int_usb);
+   usb_wait_for_enumeration ();
+   output_high (PIN_B6);
+
+   while (true)
+   {
+      if (usb_enumerated ())
+      {
+         usb_task () ;
+
+         //usb_put_packet (1, out_data, 8, USB_DTS_TOGGLE) ;
+         
+         for (int i; i<=15; i++){
+            usb_put_packet (1, infoData[i], 8, USB_DTS_TOGGLE) ;
+            delay_ms (1000) ;
+         }
+      }
+   }
+}
+

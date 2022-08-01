@@ -1,0 +1,107 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @TRIS_C
+021-022 Lectura
+023-024 Voltaje
+025-026 SetPoint
+027-028 Almacen1
+029-02A Almacen2
+02B-02C Almacen3
+02D-02E Almacen0
+02F-030 Total
+031     Decenas
+032     Unidades
+033     MAIN.i
+034-035 @ITOF.P1
+034     DigitaNumero.Digito
+034-037 @SFTOI.P1
+034-035 @MUL1616.P2
+034     inicio.@SCRATCH1
+034     MAIN.@SCRATCH1
+035     @delay_ms1.P1
+035     DigitaNumero.pinHigh
+035     MAIN.@SCRATCH2
+036-037 @DIV1616.P1
+036-037 @MUL1616.P2
+036     MAIN.@SCRATCH3
+037     MAIN.@SCRATCH4
+038-03B @MULFF.P1
+038-039 @DIV1616.P2
+038-03B @DIVFF.P3
+038     @MUL1616.@SCRATCH1
+03A     @DIV1616.@SCRATCH1
+03C-03F @DIVFF.P1
+03C-03F @MULFF.P2
+040     @MULFF.@SCRATCH1
+040     @DIVFF.@SCRATCH1
+041     @MULFF.@SCRATCH2
+041     @DIVFF.@SCRATCH2
+042     @MULFF.@SCRATCH3
+042     @DIVFF.@SCRATCH3
+043     @MULFF.@SCRATCH4
+043     @DIVFF.@SCRATCH4
+044     @MULFF.@SCRATCH5
+044     @DIVFF.@SCRATCH5
+045     @DIVFF.@SCRATCH6
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+107.6   C1OUT
+108.6   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms1
+000225  DigitaNumero
+00026E  @goto10064
+000018  inicio
+00027C  MAIN
+000068  @ITOF
+000087  @MULFF
+0000FC  @DIVFF
+0001C8  @SFTOI
+0001E9  @MUL1616
+000200  @DIV1616
+00027C  @cinit1
+000296  @cinit2
+
+Project Directory:
+    D:\Electronica\CCS\Control Temperatura\
+
+Project Files:
+    MainCode.c                                              [04-sep-13 20:07  CRC=B875FE25]
+    C:\Program Files\PICC\devices\16f886.h                  [30-nov-12 19:59  CRC=AAA4E837]
+    C:\Program Files\PICC\drivers\SevenSegment.h            [28-ago-13 13:06  CRC=092BD326]
+
+Source signature=75728CA8
+
+Units:
+    MainCode (main)
+
+Compiler Settings:
+    Processor:      PIC16F886
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      MainCode.err
+    Ext Symbols: MainCode.esym
+    INHX8:       MainCode.hex
+    Symbols:     MainCode.sym
+    List:        MainCode.lst
+    Debug/COFF:  MainCode.cof
+    Project:     MainCode.PJT
+    Call Tree:   MainCode.tre
+    Statistics:  MainCode.STA

@@ -1,0 +1,342 @@
+CCS PCH C Compiler, Version 4.140, 38880               23-ene-14 22:23
+
+               Filename:   D:\Electrónica\CCS\ClienteRPi\MainPi.lst
+
+               ROM used:   122 bytes (0%)
+                           Largest free fragment is 24450
+               RAM used:   7 (0%) at main() level
+                           9 (0%) worst case
+               Stack:     1 locations
+
+*
+2000:  GOTO   2032
+.................... #include <G-PiC Lite!.c> 
+.................... #include <18F4550.h> 
+.................... //////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... #device PIC18F4550 
+.................... #list 
+....................  
+.................... //#ifdef ADC_10BITS   //Define ADC_10BITS antes de llamar la biblioteca para tener esta configuracion 
+.................... #device ADC = 10  
+.................... //#endif 
+.................... #fuses HSPLL,NOWDT,NOPROTECT,NOLVP,NODEBUG,USBDIV,PLL5,CPUDIV1,VREGEN,NOPBADEN 
+.................... #use delay(clock=48000000) 
+*
+2008:  CLRF   FEA
+200A:  MOVLW  07
+200C:  MOVWF  FE9
+200E:  MOVF   FEF,W
+2010:  BZ    202E
+2012:  MOVLW  0F
+2014:  MOVWF  01
+2016:  CLRF   00
+2018:  DECFSZ 00,F
+201A:  BRA    2018
+201C:  DECFSZ 01,F
+201E:  BRA    2016
+2020:  MOVLW  8F
+2022:  MOVWF  00
+2024:  DECFSZ 00,F
+2026:  BRA    2024
+2028:  NOP   
+202A:  DECFSZ FEF,F
+202C:  BRA    2012
+202E:  GOTO   2076 (RETURN)
+.................... #ifndef NO_BOOTLOADER   //Define NO_BOOTLOADER antes de llamar la biblioteca para no cargar el bootloader 
+....................    #include <usb/usb_bootloader.h>  
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////                                                                   //// 
+.................... ////                     USB_BOOTLOADER.H                              //// 
+.................... ////                                                                   //// 
+.................... ////  This include file must be included by any application loaded     //// 
+.................... ////  by the example USB bootloader (ex_usb_bootloader                 //// 
+.................... ////                                                                   //// 
+.................... ////  The directives in this file relocate the reset and interrupt     //// 
+.................... ////  vectors as well as reserving space for the bootloader.           //// 
+.................... ////                                                                   //// 
+.................... ////  For more documentation see ex_usb_bootloader.c                   //// 
+.................... ////                                                                   //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////                                                                   //// 
+.................... //// VERSION HISTORY                                                   //// 
+.................... ////                                                                   //// 
+.................... //// March 5th, 2009:                                                  //// 
+.................... ////   Cleanup for Wizard.                                             //// 
+.................... ////   PIC24 Initial release.                                          //// 
+.................... ////                                                                   //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996,2009 Custom Computer Services           //// 
+.................... //// This source code may only be used by licensed users of the CCS    //// 
+.................... //// C compiler.  This source code may only be distributed to other    //// 
+.................... //// licensed users of the CCS C compiler.  No other use,              //// 
+.................... //// reproduction or distribution is permitted without written         //// 
+.................... //// permission.  Derivative programs created using this software      //// 
+.................... //// in object code form are not restricted in any way.                //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+....................  
+.................... //how big is the bootloader? 
+.................... //the bootloader will reside from address 0x0000 to this location.  the 
+.................... //application will then sit at this location+1 to the end of program memory. 
+.................... //#if defined(__DEBUG) 
+.................... #define LOADER_SIZE        (0x1FFF) 
+.................... //#else 
+.................... //#define LOADER_SIZE        (0x17FF) 
+.................... //#endif 
+....................  
+.................... //the loader and application need a common flag that determines if we are in 
+.................... //the bootloader or application, that way the ISR knows where to go.  this 
+.................... //is the location in ram that is reserved for this flag. 
+.................... #define LOC_IN_LOADER_FLAG  0x25 
+....................  
+.................... //// --- end configuration --- //////////////////////////////////////////// 
+....................  
+.................... #reserve LOC_IN_LOADER_FLAG 
+....................  
+.................... int8 g_InBootloader; 
+.................... #locate g_InBootloader=LOC_IN_LOADER_FLAG 
+....................  
+.................... #define LOADER_START       (0) 
+.................... #define LOADER_END         (LOADER_SIZE) 
+.................... #define APPLICATION_START  (LOADER_SIZE+1) 
+.................... #if defined(__USB_87J50__) 
+....................  #define APPLICATION_END    (getenv("PROGRAM_MEMORY")-9) //configuration bits 
+.................... #else 
+....................  #define APPLICATION_END    (getenv("PROGRAM_MEMORY")-1) 
+.................... #endif  
+.................... #define APPLICATION_ISR    (APPLICATION_START+8) 
+....................  
+.................... #ifdef _bootloader 
+....................  /* 
+....................   Provide an empty application, so if you load this .HEX file into the pic 
+....................   without an application this will prevent the pic from executing unknown code. 
+....................  */ 
+....................  #org APPLICATION_START,APPLICATION_START+0xF 
+....................  void BlankApplication(void)  
+....................  { 
+....................    while(TRUE); 
+....................  } 
+....................  
+....................  //we need to prevent the loader from using application space 
+....................  #if (APPLICATION_END > 0x10000) 
+....................    #org APPLICATION_START+0x10, 0xFFFF {} 
+....................    #if (APPLICATION_END > 0x20000) 
+....................       #org 0x10000, 0x1FFFF {} 
+....................       #org 0x20000, APPLICATION_END {} 
+....................    #else 
+....................       #org 0x10000, APPLICATION_END {} 
+....................    #endif 
+....................  #else 
+....................    #org APPLICATION_START+0x10, APPLICATION_END {} 
+....................  #endif 
+....................  
+....................    #define  USB_CONFIG_PID       0x0001 
+....................  
+....................    #define USB_STRINGS_OVERWRITTEN 
+....................    char USB_STRING_DESC_OFFSET[]={0,4,12}; 
+....................  
+....................    // Here is where the "CCS" Manufacturer string and "SERIAL DEMO" are stored. 
+....................    // Strings are saved as unicode. 
+....................    // These strings are mostly only displayed during the add hardware wizard. 
+....................    // Once the operating system drivers have been installed it will usually display 
+....................    // the name from the drivers .INF. 
+....................    char const USB_STRING_DESC[]={ 
+....................       //string 0 
+....................             4, //length of string index 
+....................             0x03, //USB_DESC_STRING_TYPE, //descriptor type 0x03 (STRING) 
+....................             0x09,0x04,   //Microsoft Defined for US-English 
+....................       //string 1  - manufacturer 
+....................             12, //length of string index 
+....................             0x03, //USB_DESC_STRING_TYPE, //descriptor type 0x03 (STRING) 
+....................             'G',0, 
+....................             '-',0, 
+....................             'P',0, 
+....................             'i',0, 
+....................             'C',0, 
+....................       //string 2 - product 
+....................             24, //length of string index 
+....................             0x03, //USB_DESC_STRING_TYPE, //descriptor type 0x03 (STRING) 
+....................             'G',0, 
+....................             '-',0, 
+....................             'P',0, 
+....................             'i',0, 
+....................             'C',0, 
+....................             ' ',0, 
+....................             'L',0, 
+....................             'i',0, 
+....................             't',0, 
+....................             'e',0, 
+....................             '!',0, 
+....................    }; 
+.................... #endif   //_bootloader 
+....................  
+.................... #ifndef _bootloader 
+....................  //in the application, this moves the reset and isr vector out of the bootload 
+....................  //space.  it then reserves the loader space from being used by the application. 
+....................  #build(reset=APPLICATION_START, interrupt=APPLICATION_ISR) 
+....................  #org 0, LOADER_END {} 
+.................... #endif 
+....................  
+.................... #endif 
+.................... //#include <Arduino Functions.c> 
+....................  
+.................... #define Reset_GPiC   reset_cpu   // Ejecuta un reset. Útil para finalizar la conexión USB 
+....................  
+.................... /** 
+.................... *  Recibe una variable con valores entre 0-255 y convierte los valores en un 
+.................... *  rango entre 0-100. 
+.................... *  Esta función es particularmente útil para asignar valores de porcentaje PWM 
+.................... */ 
+.................... int8 convert255to100(int8 _value) { 
+....................    return((_value*100.0)/255.0); 
+.................... } 
+....................  
+.................... /** 
+.................... *  Recibe una variable con valores entre 0-255 y lo convierte a su equivalente 
+.................... *  en voltaje entre 0V y 5V. Util para variables que contengan valores analógicos 
+.................... */ 
+.................... float convertDECtoVolt(float _value) { 
+....................    _value = (_value*5)/255; 
+....................    return(_value); 
+.................... } 
+....................  
+.................... /** 
+.................... *  Convierte el valor analogico leido de un LM35 y lo convierte en su equivalente 
+.................... *  en grados. 
+.................... */ 
+.................... float convertDECtoDegree(float _value) { 
+....................    _value = 100*(_value*5)/255; 
+....................    return(_value); 
+.................... } 
+....................  
+.................... void output_pins(int16 _pins[], int _pinCount, int16 _value) { 
+....................    int8 _i; 
+....................    for(_i = 0; _i < _pinCount; _i++) { 
+....................       output_bit(_pins[_i], bit_test(_value, _i)); 
+....................    } 
+.................... } 
+....................  
+.................... #define PinA0 0 
+.................... #define PinA1 1 
+.................... #define PinA2 2 
+.................... #define PinA3 3 
+.................... #define PinA4 4 
+.................... #define PinA5 5 
+.................... #define PinE0 6 
+.................... #define PinE1 7 
+.................... #define PinE2 8 
+.................... #define PinC0 9 
+.................... #define PinC1 10 
+.................... #define PinC2 11 
+.................... #define PinD0 12 
+.................... #define PinD1 13 
+.................... #define PinD2 14 
+.................... #define PinD3 15 
+.................... #define PinC6 16 
+.................... #define PinC7 17 
+.................... #define PinD4 18 
+.................... #define PinD5 19 
+.................... #define PinD6 20 
+.................... #define PinD7 21 
+.................... #define PinB0 22 
+.................... #define PinB1 23 
+.................... #define PinB2 24 
+.................... #define PinB3 25 
+.................... #define PinB4 26 
+.................... #define PinB5 27 
+.................... #define PinB6 28 
+.................... #define PinB7 29 
+.................... #define _numberPins {Pin_A0, Pin_A1, Pin_A2, Pin_A3, Pin_A4, Pin_A5, \ 
+....................                      Pin_E0, Pin_E1, Pin_E2, Pin_C0, Pin_C1, Pin_C2, \ 
+....................                      Pin_D0, Pin_D1, Pin_D2, Pin_D3, Pin_C6, Pin_C7, \ 
+....................                      Pin_D4, Pin_D5, Pin_D6, Pin_D7, Pin_B0, Pin_B1, \ 
+....................                      Pin_B2, Pin_B3, Pin_B4, Pin_B5, Pin_B6, Pin_B7} 
+....................  
+.................... int16 analogRead(int _Channel){ 
+....................    int16 _adcReading; 
+....................     
+....................    setup_adc(ADC_CLOCK_INTERNAL); 
+....................    setup_adc_ports(ALL_ANALOG); 
+....................    set_adc_channel(_Channel); 
+....................    delay_us(10); 
+....................     
+....................    _adcReading=read_adc(); 
+....................     
+....................    setup_adc_ports(NO_ANALOGS); 
+....................    return(_adcReading); 
+.................... } 
+....................  
+.................... void digitalWrite2(int8 _pin, int1 _state){ 
+....................    const int16 _pins[30] = _numberPins; 
+....................    output_bit(_pins[_pin], _state); 
+.................... } 
+....................  
+.................... int1 digitalRead2(int8 _pin){ 
+....................    const int16 _pins[30] = _numberPins; 
+....................    return input(_pins[_pin]); 
+.................... } 
+....................  
+.................... #use i2c (slave, sda=PIN_B0, scl=PIN_B1, slow, address=0x04) 
+....................  
+.................... void main() { 
+2032:  CLRF   FF8
+2034:  BCF    FD0.7
+2036:  CLRF   FEA
+2038:  CLRF   FE9
+203A:  BSF    F93.1
+203C:  BSF    F93.0
+203E:  MOVLW  04
+2040:  MOVWF  FC8
+2042:  MOVLW  36
+2044:  MOVWF  FC6
+2046:  BSF    FC5.0
+2048:  MOVF   FC1,W
+204A:  ANDLW  C0
+204C:  IORLW  0F
+204E:  MOVWF  FC1
+2050:  MOVLW  07
+2052:  MOVWF  FB4
+....................    int dato; 
+....................     
+....................    while (true) { 
+....................     
+....................       // Recepción por comunicación I2C      
+....................       if(i2c_poll()) { 
+2054:  BTFSS  FC7.0
+2056:  BRA    207A
+....................  
+....................          dato=i2c_read(); 
+2058:  BCF    FC6.6
+205A:  BTFSS  F9E.3
+205C:  BRA    205A
+205E:  MOVF   FC9,W
+2060:  BSF    FC6.4
+2062:  MOVWF  05
+....................          if (dato == 1) { 
+2064:  DECFSZ 05,W
+2066:  BRA    207A
+....................             output_toggle(PIN_A3); 
+2068:  BCF    F92.3
+206A:  BTG    F89.3
+....................             delay_ms(500); 
+206C:  MOVLW  02
+206E:  MOVWF  06
+2070:  MOVLW  FA
+2072:  MOVWF  07
+2074:  BRA    2008
+2076:  DECFSZ 06,F
+2078:  BRA    2070
+....................          } 
+....................       } 
+....................    } 
+207A:  BRA    2054
+.................... } 
+207C:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CE24   PLL5 CPUDIV1 USBDIV HSPLL FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8500   CCP2C1 NOPBADEN LPT1OSC MCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

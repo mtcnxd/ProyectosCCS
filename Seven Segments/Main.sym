@@ -1,0 +1,63 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     @TRIS_C
+021     MAIN.i
+022     DigitaNumero.Digito
+022     MAIN.@SCRATCH1
+023     @delay_ms1.P1
+023     DigitaNumero.pinHigh
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+107.6   C1OUT
+108.6   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms1
+000018  DigitaNumero
+000063  @goto10064
+000071  MAIN
+000071  @cinit1
+00008B  @cinit2
+
+Project Directory:
+    D:\Electronica\CCS\Seven Segments\
+
+Project Files:
+    Main.c                                                  [08-dic-13 20:43  CRC=83289CF7]
+    C:\Program Files\PICC\devices\16f886.h                  [30-nov-12 18:59  CRC=AAA4E837]
+    C:\Program Files\PICC\drivers\SevenSegment.h            [28-ago-13 12:06  CRC=092BD326]
+
+Source signature=40252B7A
+
+Units:
+    Main (main)
+
+Compiler Settings:
+    Processor:      PIC16F886
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      Main.err
+    Ext Symbols: Main.esym
+    INHX8:       Main.hex
+    Symbols:     Main.sym
+    List:        Main.lst
+    Debug/COFF:  Main.cof
+    Project:     Main.PJT
+    Call Tree:   Main.tre
+    Statistics:  Main.STA

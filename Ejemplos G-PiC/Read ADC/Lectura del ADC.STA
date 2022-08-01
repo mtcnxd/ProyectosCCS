@@ -1,0 +1,51 @@
+
+ROM used:   548 (2%)
+            552 (2%) including unused fragments
+
+            0 Average locations per line
+            3 Average locations per statement
+
+RAM used:   43 (2%) at main() level
+            46 (2%) worst case
+
+Stack used: 2/31 worst case (1 in main + 1 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   12     6   3  Lectura del ADC.c
+  147    17   8  C:\Program Files\PICC\drivers\G-PiC Lite!.c
+  464     0   0  C:\Program Files\PICC\devices\18F4550.h
+  132     0   0  C:\Program Files\PICC\drivers\usb\usb_bootloader.h
+  111    15   7  C:\Program Files\PICC\drivers\Arduino Functions.c
+  338   170  82  C:\Program Files\PICC\drivers\analogWrite.c
+----- -----
+ 1204   208 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   4   1             @delay_ms1
+0    266  24   0  1663  3.8  Timer3_Interrupt
+0     72   7   1    86  1.6  MAIN
+ Inline        0             @cinit1
+
+Program metrics:
+    Functions               2
+    Statements              208
+    Comments                328
+    Volume (V)              1865
+    Difficulty (D)          5.4
+    Effort to implement (E) 10007
+    Time to implement (T)   9 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   25
+    Maintainability (MI)    99
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-01FFE     0  8192  
+02000-02006     4  4  
+02008-020AC   166  0  
+020AE-07FFE   378  24024  
+
+
+

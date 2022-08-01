@@ -1,0 +1,67 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 Intensidad
+006     main.@SCRATCH1
+007     @delay_ms1.P1
+F6B.6   C2OUT
+F6D.6   C1OUT
+F74     CCP_4
+F74     CCP_4_LOW
+F75     CCP_4_HIGH
+FB8     CCP_3_LOW
+FB8     CCP_3
+FB9     CCP_3_HIGH
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @delay_ms1
+00002C  main
+00002C  @cinit1
+000046  @cinit2
+
+Project Directory:
+    D:\Electronica\CCS\Dimmer Digital\
+
+Project Files:
+    principal.c                                             [28-jun-13 16:48  CRC=AB279CDD]
+    C:\Program Files\PICC\devices\18F14K50.h                [30-nov-12 19:59  CRC=45ECC272]
+
+Source signature=370121C1
+
+Units:
+    principal (main)
+
+Compiler Settings:
+    Processor:      PIC18F14K50
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      principal.err
+    Ext Symbols: principal.esym
+    INHX32:      principal.hex
+    Symbols:     principal.sym
+    List:        principal.lst
+    Debug/COFF:  principal.cof
+    Project:     principal.PJT
+    Call Tree:   principal.tre
+    Statistics:  principal.STA

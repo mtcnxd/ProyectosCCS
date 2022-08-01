@@ -1,0 +1,9 @@
+юдReceptor_i2c
+   юдmain  0/134  Ram=3
+      цд@cinit1  (Inline)  Ram=0
+      цд@PSTRINGCN_67  0/30  Ram=3
+      Ё  юд@PUTCHAR_BIU_1  0/10  Ram=1
+      цд@PRINTF_LU_67  0/180  Ram=9
+      Ё  юд@PUTCHAR_BIU_1  0/10  Ram=1
+      юд@PSTRINGCN_67  0/30  Ram=3
+         юд@PUTCHAR_BIU_1  0/10  Ram=1

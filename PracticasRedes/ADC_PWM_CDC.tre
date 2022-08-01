@@ -1,0 +1,11 @@
+ÀÄADC_PWM_CDC
+   ÃÄMAIN  0/32  Ram=0
+   ³  ÀÄ@cinit1  (Inline)  Ram=0
+   ÀÄinterrupt_ext0  0/162  Ram=4
+      ÃÄanalogRead  0/80  Ram=3
+      ÃÄ@ITOF  0/56  Ram=2
+      ÃÄ@DIVFF  0/348  Ram=14
+      ÃÄ@MULFF  0/244  Ram=11
+      ÃÄ@delay_ms1  0/40  Ram=1
+      ÃÄ@delay_ms1  0/40  Ram=1
+      ÀÄ@delay_ms1  0/40  Ram=1

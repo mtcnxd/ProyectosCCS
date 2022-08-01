@@ -1,0 +1,53 @@
+
+ROM used:   1038 (3%)
+            1042 (3%) including unused fragments
+
+            1 Average locations per line
+            5 Average locations per statement
+
+RAM used:   42 (2%) at main() level
+            47 (2%) worst case
+
+Stack used: 3/31 worst case (2 in main + 1 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   26     7   3  Ejemplo 2 - Led fading.c
+  147    17   8  C:\Program Files\PICC\drivers\G-PIC Lite!.c
+  464     0   0  C:\Program Files\PICC\devices\18F4550.h
+  153     0   0  C:\Program Files\PICC\drivers\usb_bootloader.h
+  111    15   7  C:\Program Files\PICC\drivers\Arduino Functions.c
+  338   170  81  C:\Program Files\PICC\drivers\analogWrite.c
+----- -----
+ 1239   209 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     42   2   1             @delay_ms1
+0    452  22   2  3615  9.0  analogWrite
+0     42   2   3             @DIV88
+0    266  13   0  1663  3.8  Timer3_Interrupt
+0     66   3   0   131  3.9  MAIN
+ Inline        0             @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              209
+    Comments                394
+    Volume (V)              6262
+    Difficulty (D)          16.6
+    Effort to implement (E) 104107
+    Time to implement (T)   1 hours, 36 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   60
+    Maintainability (MI)    13
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-017FE     0  6144  
+01800-01806     4  4  
+01808-018AC   166  0  
+018AE-07FFE   868  25582  
+
+
+

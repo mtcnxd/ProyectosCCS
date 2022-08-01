@@ -1,0 +1,327 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019     @INTERRUPT_AREA
+01A.0   _PWM0_Flag
+01A.1   _PWM1_Flag
+01A.2   _PWM2_Flag
+01A.3   _PWM3_Flag
+01A.4   _PWM4_Flag
+01A.5   _PWM5_Flag
+01A.6   _PWM6_Flag
+01A.7   _PWM7_Flag
+01B.0   _PWM8_Flag
+01B.1   _PWM9_Flag
+01B.2   _PWM10_Flag
+01B.3   _PWM11_Flag
+01B.4   analogWrite._T3_Config_Flag
+01B.5   analogWrite._T2_Config_Flag
+01C     _PWM0_DutyCycle
+01D     _PWM1_DutyCycle
+01E     _PWM2_DutyCycle
+01F     _PWM3_DutyCycle
+020     _PWM4_DutyCycle
+021     _PWM5_DutyCycle
+022     _PWM6_DutyCycle
+023     _PWM7_DutyCycle
+024     _PWM8_DutyCycle
+025     g_InBootloader
+026     _PWM9_DutyCycle
+027     _PWM10_DutyCycle
+028     _PWM11_DutyCycle
+029     Timer3_Interrupt.T3_Counter
+02A     rs232_errors
+02B-02E USB_stack_status
+02F     USTATCopy
+030     usb_state
+031     __setup_0_tx_size
+032     USB_address_pending
+033     usb_getdesc_ptr
+034     usb_getdesc_len
+035-036 USB_Interface
+037-03D pressedKeys
+03E-041 mouseData
+042     _i
+043     @WRITEBITA.P1
+043     keyboard_write.__key
+043     @READBITA.P1
+043     usb_detach.@SCRATCH1
+043     usb_task.@SCRATCH1
+043     keyboard_begin.@SCRATCH1
+043     MAIN.@SCRATCH1
+044     @WRITEBITA.P1
+044     keyboard_press._key
+044-045 @READBITA.P1
+045     usb_put_packet.endpoint
+045-046 @WRITEBITA.P1
+045     @delay_ms1.P2
+045     charToKey._char
+046-047 usb_put_packet.ptr
+048-049 usb_put_packet.len
+04A     usb_put_packet.tgl
+04B-04C usb_put_packet.buff_add
+04D     usb_put_packet.@SCRATCH1
+04E     usb_put_packet.@SCRATCH2
+056     usb_isr.TRNAttempts
+057     usb_isr_tok_dne.en
+057     usb_token_reset.i
+057     usb_isr.@SCRATCH1
+058     usb_isr_tok_dne.pidKey
+058     usb_token_reset.@SCRATCH1
+059     usb_isr_tok_in_dne.endpoint
+059     usb_isr_tok_out_dne.endpoint
+059     usb_set_configured.config
+059     usb_unstall_ep.endpoint
+059     usb_endpoint_stalled.endpoint
+059     usb_flush_in.endpoint
+059     usb_flush_out.endpoint
+059     usb_stall_ep.endpoint
+059     usb_isr_tkn_setup_StandardInterface.curr_config
+059     usb_isr_tok_dne.@SCRATCH1
+059     usb_token_reset.@SCRATCH2
+05A.0   usb_stall_ep.direction
+05A.0   usb_unstall_ep.direction
+05A     usb_flush_out.tgl
+05A.0   usb_endpoint_stalled.direction
+05A     usb_copy_desc_seg_to_ep.i
+05A     usb_set_address.address
+05A     usb_set_configured.en
+05A-05B usb_flush_in.len
+05A     usb_isr_tok_dne.@SCRATCH2
+05A     usb_isr_tkn_setup_StandardInterface.@SCRATCH1
+05B     usb_flush_out.i
+05B-05C usb_set_configured.addy
+05B     usb_endpoint_stalled.st
+05B     usb_copy_desc_seg_to_ep.c
+05B     usb_stall_ep.@SCRATCH1
+05B     usb_unstall_ep.@SCRATCH1
+05B     usb_isr_tok_dne.@SCRATCH3
+05B     usb_isr_tkn_setup_StandardInterface.@SCRATCH2
+05C     usb_request_send_response.len
+05C-05D usb_flush_out.len
+05C     usb_flush_in.tgl
+05C     usb_stall_ep.@SCRATCH2
+05C     usb_unstall_ep.@SCRATCH2
+05C     usb_endpoint_stalled.@SCRATCH1
+05C     usb_isr_tok_dne.@SCRATCH4
+05C     usb_copy_desc_seg_to_ep.@SCRATCH1
+05D     usb_flush_in.i
+05D     usb_set_configured.new_uep
+05D     usb_stall_ep.@SCRATCH3
+05D     usb_unstall_ep.@SCRATCH3
+05D     usb_endpoint_stalled.@SCRATCH2
+05D     usb_isr_tok_dne.@SCRATCH5
+05D     usb_copy_desc_seg_to_ep.@SCRATCH2
+05E     usb_tbe.en
+05E-05F usb_set_configured.len
+05E     usb_flush_in.@SCRATCH1
+05E     usb_flush_out.@SCRATCH1
+05E     usb_stall_ep.@SCRATCH4
+05E     usb_unstall_ep.@SCRATCH4
+05E     usb_isr_tok_dne.@SCRATCH6
+05F     usb_tbe.@SCRATCH1
+05F     usb_flush_in.@SCRATCH2
+05F     usb_flush_out.@SCRATCH2
+05F     usb_isr_tok_dne.@SCRATCH7
+060     usb_set_configured.i
+060     usb_tbe.@SCRATCH2
+060     usb_flush_in.@SCRATCH3
+060     usb_flush_out.@SCRATCH3
+061     usb_disable_endpoints.i
+061     usb_tbe.@SCRATCH3
+061     usb_flush_in.@SCRATCH4
+061     usb_flush_out.@SCRATCH4
+061     usb_set_configured.@SCRATCH1
+062     usb_disable_endpoint.en
+062     usb_set_configured.@SCRATCH2
+063     usb_endpoint_is_valid.endpoint
+063     usb_set_configured.@SCRATCH3
+063     usb_disable_endpoint.@SCRATCH1
+064.0   usb_endpoint_is_valid.direction
+064     usb_set_configured.@SCRATCH4
+064     usb_disable_endpoint.@SCRATCH2
+065     usb_disable_endpoint.@SCRATCH3
+065     usb_endpoint_is_valid.@SCRATCH1
+066     usb_disable_endpoint.@SCRATCH4
+400-4AB g_USBRAM
+F66     UFRML
+F67     UFRMH
+F68.0   UIR_URST
+F68     UIR
+F68.1   UIR_UERR
+F68.2   UIR_ACTV
+F68.3   UIR_TRN
+F68.4   UIR_IDLE
+F68.5   UIR_STALL
+F68.6   UIR_SOF
+F69.0   UIE_URST
+F69     UIE
+F69.1   UIE_UERR
+F69.2   UIE_ACTV
+F69.3   UIE_TRN
+F69.4   UIE_IDLE
+F69.5   UIE_STALL
+F69.6   UIE_SOF
+F6A     UEIR
+F6B     UEIE
+F6C     U1STAT
+F6D     UCON
+F6D.1   UCON_SUSPND
+F6D.2   UCON_RESUME
+F6D.3   UCON_USBEN
+F6D.4   UCON_PKTDIS
+F6D.5   UCON_SE0
+F6D.6   UCON_PBRST
+F6E     UADDR
+F6F     UCFG
+F70-F7F g_UEP
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+002F34  @delay_ms1
+002306  Timer3_Interrupt
+0020BA  usb_ep_tx_type
+0020DA  usb_ep_rx_type
+0020FA  usb_ep_tx_size
+00212A  usb_ep_rx_size
+00215A  USB_CLASS_SPECIFIC_DESC
+0021DE  USB_CLASS_SPECIFIC_DESC_LOOKUP
+0021F2  USB_CLASS_SPECIFIC_DESC_LOOKUP_SIZE
+002206  USB_CONFIG_DESC
+002258  USB_NUM_INTERFACES
+00226A  USB_CLASS_DESCRIPTORS
+00227E  USB_DEVICE_DESC
+0022A0  USB_STRING_DESC_OFFSET
+0022B4  USB_STRING_DESC
+002BA0  usb_tbe
+002EB6  usb_detach
+002EE0  usb_attach
+002EDA  usb_init_cs
+002F02  usb_task
+002F26  usb_init
+002BE0  usb_flush_in
+003140  usb_put_packet
+002AE8  usb_flush_out
+0029B0  usb_stall_ep
+00296C  usb_unstall_ep
+0029F6  usb_endpoint_stalled
+002CB8  usb_set_address
+0026C2  usb_set_configured
+002498  usb_disable_endpoint
+0024E4  usb_disable_endpoints
+002520  usb_clear_trn
+002E38  usb_isr
+002558  usb_isr_sof
+002524  usb_isr_rst
+002420  usb_init_ep0_setup
+00244E  usb_isr_uerr
+00254E  usb_isr_uidle
+002410  usb_isr_activity
+002440  usb_isr_stall
+00255E  usb_request_send_response
+002564  usb_request_stall
+002CF2  usb_isr_tok_dne
+0024FA  usb_token_reset
+002456  usb_endpoint_is_valid
+002CDC  usb_isr_tok_in_dne
+002CB2  usb_isr_tok_out_dne
+002AB6  usb_isr_tok_setup_dne
+002834  usb_isr_tkn_setup_StandardDevice
+0028D8  usb_isr_tkn_setup_StandardInterface
+002A4C  usb_isr_tkn_setup_StandardEndpoint
+002AAA  usb_isr_tkn_setup_ClassInterface
+0025F6  usb_Get_Descriptor
+002CCE  usb_finish_set_address
+002568  usb_copy_desc_seg_to_ep
+0025D4  @goto11456
+002F5C  keyboard_begin
+002F70  charToKey
+003236  keyboard_releaseAll
+0031E0  keyboard_press
+00325A  keyboard_write
+003264  MAIN
+003264  @cinit1
+0032A2  @cinit2
+
+Project Directory:
+    D:\Dropbox\Electronics [Dropbox]\Cursos y talleres\Curso G-PIC Lite!\Ejemplos G-PiC Keyboard\KeyboardWrite\
+
+Project Files:
+    KeyboardWrite.c                                         [14-Feb-13 16:26  CRC=4BE94E0D]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\G-PiC Lite!.c [30-Jan-13 18:29  CRC=FE1691E8]
+    C:\Program Files (x86)\PICC\devices\18F4550.h           [30-Nov-12 18:59  CRC=DCD1BB11]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\usb_bootloader.h [08-Mar-12 19:05  CRC=933A968C]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\Arduino Functions.c [30-Jan-13 17:23  CRC=10689400]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\analogWrite.c [29-Dec-12 19:29  CRC=DAFC0FE2]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\SensorModules.c [30-Jan-13 20:18  CRC=62D73205]
+    ..\..\..\..\CCS\_Libraries\G-PiC USB HID\G-PiC KeyboardMouse Library\G-PiC KeyboardMouse.c [14-Feb-13 16:17  CRC=C4FCE99A]
+    ..\..\..\..\CCS\_Libraries\G-PiC USB HID\G-PiC KeyboardMouse Library\KeyboardMouse_Descriptor.h [14-Feb-13 16:17  CRC=850C38A1]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\pic18_usb.h [15-Mar-10 16:32  CRC=727920F7]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\usb_hw_layer.h [24-Mar-09 10:06  CRC=BA126EE3]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\usb.h [13-Nov-09 09:07  CRC=86072E11]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\usb.c [15-Mar-10 16:32  CRC=D861A196]
+    ..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\pic18_usb.c [15-Mar-10 16:32  CRC=A2457461]
+    ..\..\..\..\CCS\_Libraries\G-PiC USB HID\G-PiC KeyboardMouse Library\KeyboardKeys.h [03-Jan-13 00:15  CRC=79DA81AF]
+
+Source signature=734000F4
+
+Units:
+    KeyboardWrite (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      KeyboardWrite.err
+    Ext Symbols: KeyboardWrite.esym
+    INHX32:      KeyboardWrite.hex
+    Symbols:     KeyboardWrite.sym
+    List:        KeyboardWrite.lst
+    Debug/COFF:  KeyboardWrite.cof
+    Project:     KeyboardWrite.PJT
+    Call Tree:   KeyboardWrite.tre
+    Statistics:  KeyboardWrite.STA

@@ -1,0 +1,8 @@
+Una vez que hayas descargado el archivo adc_cdc_LV.hex al entrenador, en el momento en que le des reset ya sea desde
+la aplicación de windows o desde el boton de reset del entrenador, windows detectara un nuevo dispositivo USB, en ese
+momento elige la opción de instalar los driver de forma manual, los cuales los encontraras en la misma carpeta del
+ejemplo CCS CDC_USB LABVIE. El nombre de la carpeta es Drivers Windows CDC, entra y selecciona la carpeta de la vefrsión
+de Windows que tengas instalado en PC.
+
+Despues de instalar el driver automaticamente te aparecerá un puerto COM en el administrador de dispositivos. Dependiendo
+el número de puerto COM que te asigne es el tendrás que seleccionar des el programa de LABVIEW para que corras el ejercicio.

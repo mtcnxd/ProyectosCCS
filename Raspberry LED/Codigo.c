@@ -1,0 +1,27 @@
+#include <G-PiC Lite!.c>
+#include <usb_cdc.h>
+#define LED_PIN PIN_A4
+
+int getChar;
+
+void main () 
+{
+   usb_init ();
+   
+   while (true)
+   {      
+      if (usb_enumerated () )
+      {
+         getChar = usb_cdc_getc();
+         
+         if (getChar == 1 || getChar == '1'){
+            output_high(LED_PIN);
+            usb_cdc_putc ("Encendido\n\r");
+         } else if (getChar == 0 || getChar == '0') {
+            output_low(LED_PIN);
+            usb_cdc_putc ("Apagado\n\r");
+         }
+      }
+   }
+}
+

@@ -1,0 +1,136 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019     contador
+01A     lcd_init.i
+01A     @PRINTF_D_93.P1
+01A     MAIN.@SCRATCH1
+01B     @PRINTF_D_93.P1
+01B     lcd_init.@SCRATCH1
+01B     MAIN.@SCRATCH2
+01C     @PSTRINGCN_93.P1
+01C-01D @PRINTF_LU_93.P2
+01C     @PRINTF_D_93.@SCRATCH1
+01D     @PSTRINGCN_93.@SCRATCH1
+01D     @PRINTF_D_93.@SCRATCH2
+01E     @PSTRINGCN_93.@SCRATCH2
+01E     @PRINTF_LU_93.@SCRATCH1
+01E     @PRINTF_D_93.@SCRATCH3
+01F     @PRINTF_LU_93.@SCRATCH2
+01F     @PRINTF_D_93.@SCRATCH4
+020     @DIV88.P1
+020     @PRINTF_LU_93.@SCRATCH3
+021     @DIV88.P1
+021     @PRINTF_LU_93.@SCRATCH4
+022     @PRINTF_LU_93.@SCRATCH5
+022     @DIV88.@SCRATCH1
+023     @PRINTF_LU_93.@SCRATCH6
+024     @PRINTF_LU_93.@SCRATCH7
+025     lcd_putc.c
+026     lcd_gotoxy.x
+026     @delay_ms1.P1
+027     lcd_gotoxy.y
+028     lcd_gotoxy.address
+029     lcd_gotoxy.@SCRATCH1
+02A     lcd_send_byte.address
+02B     lcd_send_byte.n
+02C     lcd_read_byte.low
+02C     lcd_send_byte.@SCRATCH1
+02D     lcd_send_nibble.n
+02D     lcd_read_byte.high
+02E     lcd_read_byte.@SCRATCH1
+F81     lcd
+F8A     lcdlat
+F93     lcdtris
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000100  @delay_ms1
+0000AE  LCD_INIT_STRING
+000154  lcd_read_byte
+000148  lcd_read_nibble
+000128  lcd_send_nibble
+00019A  lcd_send_byte
+0001D4  lcd_init
+000230  lcd_gotoxy
+000252  lcd_putc
+0000C2  interrupt_timer0
+000448  MAIN
+0000DE  @const110
+0002A2  @PSTRINGCN_93
+0002C0  @PRINTF_LU_93
+0000F0  @const115
+000374  @DIV88
+00039C  @PRINTF_D_93
+000448  @cinit1
+000460  @cinit2
+
+Project Directory:
+    D:\Electronica\CCS\Curso Ayrton\
+
+Project Files:
+    Timer0.c                                                [02-may-13 00:47  CRC=9D1AF766]
+    C:\Program Files\PICC\devices\18F2550.h                 [30-nov-12 19:59  CRC=68D6E861]
+    C:\Program Files\PICC\drivers\lcd.c                     [23-ago-12 10:01  CRC=D28E8746]
+
+Source signature=AB0EEE53
+
+Units:
+    Timer0 (main)
+
+Compiler Settings:
+    Processor:      PIC18F2550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      Timer0.err
+    Ext Symbols: Timer0.esym
+    INHX32:      Timer0.hex
+    Symbols:     Timer0.sym
+    List:        Timer0.lst
+    Debug/COFF:  Timer0.cof
+    Project:     Timer0.PJT
+    Call Tree:   Timer0.tre
+    Statistics:  Timer0.STA

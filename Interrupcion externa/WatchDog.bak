@@ -1,0 +1,33 @@
+#include <18F2550.h>
+#device adc = 10
+#fuses HSPLL,NOLVP,NODEBUG,PLL2,CPUDIV1,VREGEN,NOPBADEN, NOWDT
+#use delay (clock = 48M)
+//#include <lcd.c>
+
+#INT_TIMER0
+void interrupt_timer0() {
+   set_timer0(0);                   // Reinicia el contador del Timer0
+}
+
+#INT_EXT
+void interrupt_ext0() {
+   output_toggle(PIN_C2);
+}
+
+void main(void) {
+//   lcd_init();
+
+   setup_timer_0( T0_INTERNAL | T0_DIV_8 );
+   set_timer0(5);
+   
+   enable_interrupts( GLOBAL );
+   enable_interrupts( INT_TIMER0 );
+   enable_interrupts( INT_EXT );
+
+while (TRUE) {
+      //lcd_gotoxy(1,1);
+      //printf(lcd_putc, "Prueba externa");
+      //delay_ms(200);
+   }
+}
+

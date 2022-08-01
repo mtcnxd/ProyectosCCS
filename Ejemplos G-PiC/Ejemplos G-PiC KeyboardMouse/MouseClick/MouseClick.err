@@ -1,0 +1,9 @@
+*** Error 18 "MouseClick.c" Line 25(10,33): File can not be opened
+    Not in "C:\Program Files\PICC\devices\G-PiC KeyboardMouse.c"
+    Not in "C:\Program Files\PICC\drivers\G-PiC KeyboardMouse.c"
+    Not in "C:\Program Files\PICC\drivers\usb\G-PiC KeyboardMouse.c"
+    Not in project "D:\Electronica\Ejemplos G-PiC\Ejemplos G-PiC KeyboardMouse\MouseClick\G-PiC KeyboardMouse.c"
+*** Error 12 "MouseClick.c" Line 30(23,24): Undefined identifier  -- KeyboardMouse_begin
+*** Error 12 "MouseClick.c" Line 34(21,22): Undefined identifier  -- mouse_click
+      3 Errors,  0 Warnings.
+Build Failed.

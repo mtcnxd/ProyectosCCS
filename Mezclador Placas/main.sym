@@ -1,0 +1,52 @@
+004     @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+020     @SCRATCH
+021     @SCRATCH
+021     _RETURN_
+022     @SCRATCH
+023     @SCRATCH
+025     main.@SCRATCH1
+026     @delay_ms1.P1
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms1
+000018  main
+000018  @cinit1
+000020  @cinit2
+
+Project Directory:
+    D:\Dropbox\Electrónica\CCS\Mezclador Placas\
+
+Project Files:
+    main.c                                                  [03-dic-14 15:18  CRC=D872A938]
+    C:\Program Files\PICC\devices\16F870.h                  [30-nov-12 17:59  CRC=523EF30A]
+
+Source signature=7CF08F4C
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F870
+    Pointer Size:   8
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.PJT
+    Call Tree:   main.tre
+    Statistics:  main.STA

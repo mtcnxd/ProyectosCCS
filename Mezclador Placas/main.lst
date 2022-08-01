@@ -1,0 +1,86 @@
+CCS PCM C Compiler, Version 4.140, 25498               03-dic-14 15:18
+
+               Filename:   D:\Dropbox\Electrónica\CCS\Mezclador Placas\main.lst
+
+               ROM used:   56 words (3%)
+                           Largest free fragment is 1992
+               RAM used:   5 (4%) at main() level
+                           6 (5%) worst case
+               Stack:     1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   018
+0003:  NOP
+.................... #include <16F870.h> 
+.................... //////// Standard Header file for the PIC16F870 device //////////////// 
+.................... #device PIC16F870 
+.................... #list 
+....................  
+.................... #fuses NOWDT, NOPROTECT, XT, NOLVP 
+.................... #use delay(clock=4000000) 
+0004:  MOVLW  26
+0005:  MOVWF  04
+0006:  MOVF   00,W
+0007:  BTFSC  03.2
+0008:  GOTO   017
+0009:  MOVLW  01
+000A:  MOVWF  21
+000B:  CLRF   20
+000C:  DECFSZ 20,F
+000D:  GOTO   00C
+000E:  DECFSZ 21,F
+000F:  GOTO   00B
+0010:  MOVLW  4A
+0011:  MOVWF  20
+0012:  DECFSZ 20,F
+0013:  GOTO   012
+0014:  GOTO   015
+0015:  DECFSZ 00,F
+0016:  GOTO   009
+0017:  RETURN
+....................  
+.................... void main () { 
+0018:  CLRF   04
+0019:  MOVLW  1F
+001A:  ANDWF  03,F
+001B:  BSF    03.5
+001C:  BSF    1F.0
+001D:  BSF    1F.1
+001E:  BSF    1F.2
+001F:  BCF    1F.3
+....................   while (true){ 
+....................     output_high(PIN_B0); 
+0020:  BCF    06.0
+0021:  BCF    03.5
+0022:  BSF    06.0
+....................     delay_ms(500); 
+0023:  MOVLW  02
+0024:  MOVWF  25
+0025:  MOVLW  FA
+0026:  MOVWF  26
+0027:  CALL   004
+0028:  DECFSZ 25,F
+0029:  GOTO   025
+....................     output_low(PIN_B0); 
+002A:  BSF    03.5
+002B:  BCF    06.0
+002C:  BCF    03.5
+002D:  BCF    06.0
+....................     delay_ms(500);     
+002E:  MOVLW  02
+002F:  MOVWF  25
+0030:  MOVLW  FA
+0031:  MOVWF  26
+0032:  CALL   004
+0033:  DECFSZ 25,F
+0034:  GOTO   030
+....................   } 
+0035:  BSF    03.5
+0036:  GOTO   020
+.................... } 
+0037:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F71   XT NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

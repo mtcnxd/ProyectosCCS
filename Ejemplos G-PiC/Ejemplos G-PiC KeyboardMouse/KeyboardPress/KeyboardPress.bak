@@ -1,0 +1,35 @@
+/**
+   KeyboardPress
+  
+   Muestra la implementación básica de un teclado USB. Presiona la tecla 'a'.
+   Para mandar una 'A', la función keyboard_press() automáticamente presiona la
+   tecla Shift.  
+
+   Se requiere que el idioma del teclado sea:
+   
+   INGLÉS (Estados Unidos - Internacional).
+    
+   --
+   Created: 02 ene 2013
+   By:      Ing. Ayrton Estrella Alcocer
+            G-PiC Electronics
+*/
+
+#include <G-PiC Lite!.c>
+#include <G-PiC KeyboardMouse.c>
+
+void main() {
+   keyboard_begin();                      // Inicializa el teclado USB
+   
+   while(true) {
+      if(digitalRead(Pin_A4) == 0) {      // Si la entrada del Pin_A4 es 0
+         keyboard_press('a');             // Presiona la tecla a
+         keyboard_releaseAll();           // Libera las teclas presionadas
+         
+         delay_ms(500);
+         
+         keyboard_press('A');             // Presiona Shift + a
+         keyboard_releaseAll();           // Libera las teclas presionadas
+      }
+   }
+}

@@ -1,0 +1,5 @@
+>>> Warning 203 "D:\Dropbox\Electronics [Dropbox]\CCS\_Libraries\G-PiC Libraries [Basic]\usb\pic18_usb.c" Line 531(1,1): Condition always TRUE
+>>> Warning 202 "D:\Dropbox\Electronics [Dropbox]\CCS\_Libraries\G-PiC USB HID\G-PiC KeyboardMouse Library\G-PiC KeyboardMouse.c" Line 30(5,14): Variable never used:   mouseData
+      Memory usage:   ROM=15%      RAM=12% - 13%
+      0 Errors,  2 Warnings.
+Build Successful.

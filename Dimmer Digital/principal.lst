@@ -1,0 +1,142 @@
+CCS PCH C Compiler, Version 4.140, 38880               28-jun-13 16:51
+
+               Filename:   D:\Electronica\CCS\Dimmer Digital\principal.lst
+
+               ROM used:   182 bytes (1%)
+                           Largest free fragment is 16202
+               RAM used:   7 (1%) at main() level
+                           8 (1%) worst case
+               Stack:     1 locations
+
+*
+0000:  GOTO   002C
+.................... #include <18F14K50.h> 
+.................... //////// Standard Header file for the PIC18F14K50 device //////////////// 
+.................... #device PIC18F14K50 
+.................... #list 
+....................  
+.................... #device adc=10 
+.................... #fuses HS,NOWDT,NOLVP,NODEBUG,NOBROWNOUT,PLLEN,CPUDIV1,PUT,NOMCLR 
+.................... #use delay(clock=48000000) 
+0004:  CLRF   FEA
+0006:  MOVLW  07
+0008:  MOVWF  FE9
+000A:  MOVF   FEF,W
+000C:  BZ    002A
+000E:  MOVLW  0F
+0010:  MOVWF  01
+0012:  CLRF   00
+0014:  DECFSZ 00,F
+0016:  BRA    0014
+0018:  DECFSZ 01,F
+001A:  BRA    0012
+001C:  MOVLW  8F
+001E:  MOVWF  00
+0020:  DECFSZ 00,F
+0022:  BRA    0020
+0024:  NOP   
+0026:  DECFSZ FEF,F
+0028:  BRA    000E
+002A:  RETURN 0
+....................  
+.................... #define TriacShot PIN_B7 
+....................  
+.................... int16 Intensidad; 
+....................  
+.................... void main()  
+.................... { 
+002C:  CLRF   FF8
+002E:  BCF    FD0.7
+0030:  CLRF   FEA
+0032:  CLRF   FE9
+0034:  MOVLW  00
+0036:  MOVWF  F7E
+0038:  BCF    FC1.0
+003A:  BCF    FC1.1
+003C:  BCF    FC1.2
+003E:  BCF    FC1.3
+0040:  MOVWF  F7F
+0042:  CLRF   F6B
+0044:  CLRF   F6D
+....................    delay_ms(1000); 
+0046:  MOVLW  04
+0048:  MOVWF  06
+004A:  MOVLW  FA
+004C:  MOVWF  07
+004E:  RCALL  0004
+0050:  DECFSZ 06,F
+0052:  BRA    004A
+....................    output_low(TriacShot); 
+0054:  BCF    F93.7
+0056:  BCF    F8A.7
+....................     
+....................    set_adc_channel( 4 ); 
+0058:  MOVLW  10
+005A:  MOVWF  01
+005C:  MOVF   FC2,W
+005E:  ANDLW  C3
+0060:  IORWF  01,W
+0062:  MOVWF  FC2
+....................    setup_adc_ports( sAN4 ); 
+0064:  MOVLW  10
+0066:  MOVWF  F7E
+0068:  BCF    FC1.0
+006A:  BCF    FC1.1
+006C:  BCF    FC1.2
+006E:  BCF    FC1.3
+0070:  MOVLW  00
+0072:  MOVWF  F7F
+....................    setup_adc( ADC_CLOCK_INTERNAL ); 
+0074:  MOVF   FC0,W
+0076:  ANDLW  C0
+0078:  IORLW  07
+007A:  MOVWF  FC0
+007C:  BSF    FC0.7
+007E:  BSF    FC2.0
+....................    delay_us(1000); 
+0080:  MOVLW  01
+0082:  MOVWF  07
+0084:  RCALL  0004
+....................        
+....................    while(true) { 
+....................       Intensidad = read_adc(); 
+0086:  BSF    FC2.1
+0088:  BTFSC  FC2.1
+008A:  BRA    0088
+008C:  MOVFF  FC3,04
+0090:  MOVFF  FC4,05
+....................       delay_ms(1); 
+0094:  MOVLW  01
+0096:  MOVWF  07
+0098:  RCALL  0004
+....................  
+....................       if (Intensidad <= 512){ 
+009A:  MOVF   05,W
+009C:  SUBLW  02
+009E:  BNC   00AE
+00A0:  BNZ   00A8
+00A2:  MOVF   04,W
+00A4:  SUBLW  00
+00A6:  BNC   00AE
+....................          output_high(TriacShot); 
+00A8:  BCF    F93.7
+00AA:  BSF    F8A.7
+....................       } else { 
+00AC:  BRA    00B2
+....................          output_low(TriacShot); 
+00AE:  BCF    F93.7
+00B0:  BCF    F8A.7
+....................       } 
+....................    } 
+00B2:  BRA    0086
+.................... } 
+00B4:  SLEEP 
+
+Configuration Fuses:
+   Word  1: F220   CPUDIV1 USBDIV2 HS PLLEN PCLKEN FCMEN IESO
+   Word  2: 1E18   PUT NOBROWNOUT BORV19 NOWDT WDT32768
+   Word  3: 0800   HFOFST NOMCLR
+   Word  4: 0089   STVREN NOLVP BBSIZ2K NOXINST NODEBUG
+   Word  5: C003   NOPROTECT NOCPB NOCPD
+   Word  6: E003   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 4003   NOEBTR NOEBTRB

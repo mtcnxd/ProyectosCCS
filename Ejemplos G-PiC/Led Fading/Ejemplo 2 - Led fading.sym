@@ -1,0 +1,127 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019.0   _PWM0_Flag
+019.1   _PWM1_Flag
+019.2   _PWM2_Flag
+019.3   _PWM3_Flag
+019.4   _PWM4_Flag
+019.5   _PWM5_Flag
+019.6   _PWM6_Flag
+019.7   _PWM7_Flag
+01A.0   _PWM8_Flag
+01A.1   _PWM9_Flag
+01A.2   _PWM10_Flag
+01A.3   _PWM11_Flag
+01A.4   analogWrite._T3_Config_Flag
+01A.5   analogWrite._T2_Config_Flag
+01B     _PWM0_DutyCycle
+01C     _PWM1_DutyCycle
+01D     _PWM2_DutyCycle
+01E     _PWM3_DutyCycle
+01F     _PWM4_DutyCycle
+020     _PWM5_DutyCycle
+021     _PWM6_DutyCycle
+022     _PWM7_DutyCycle
+023     _PWM8_DutyCycle
+024     _PWM9_DutyCycle
+025     _PWM10_DutyCycle
+026     _PWM11_DutyCycle
+027     Timer3_Interrupt.T3_Counter
+028     _AReference
+029     duty
+02A     @delay_ms1.P1
+02A     @READBITA.P2
+02A     analogWrite._PWMx
+02A     @WRITEBITA.P1
+02B     analogWrite._DutyCycle
+02B     @WRITEBITA.P1
+02B-02C @READBITA.P2
+02C-02D @WRITEBITA.P1
+02C     @DIV88.P2
+02D     @DIV88.P1
+02E     @DIV88.@SCRATCH1
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+001BA6  @delay_ms1
+0019E2  analogWrite
+0019B8  @DIV88
+0018AE  Timer3_Interrupt
+001BD0  MAIN
+001BD0  @cinit1
+001BF2  @cinit2
+
+Project Directory:
+    D:\Dropbox\Electrónica\CCS\Ejemplos G-PiC\Led Fading\
+
+Project Files:
+    Ejemplo 2 - Led fading.c                                [21-feb-13 01:24  CRC=513F8BB4]
+    C:\Program Files\PICC\drivers\G-PIC Lite!.c             [24-sep-14 23:41  CRC=08D103CE]
+    C:\Program Files\PICC\devices\18F4550.h                 [30-nov-12 18:59  CRC=DCD1BB11]
+    C:\Program Files\PICC\drivers\usb_bootloader.h          [09-jul-12 15:02  CRC=C167E781]
+    C:\Program Files\PICC\drivers\Arduino Functions.c       [30-oct-13 16:03  CRC=6B76C1F5]
+    C:\Program Files\PICC\drivers\analogWrite.c             [30-dic-12 01:29  CRC=DAFC0FE2]
+
+Source signature=19B913CD
+
+Units:
+    Ejemplo 2 - Led fading (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      Ejemplo 2 - Led fading.err
+    Ext Symbols: Ejemplo 2 - Led fading.esym
+    INHX32:      Ejemplo 2 - Led fading.hex
+    Symbols:     Ejemplo 2 - Led fading.sym
+    List:        Ejemplo 2 - Led fading.lst
+    Debug/COFF:  Ejemplo 2 - Led fading.cof
+    Project:     Ejemplo 2 - Led fading.PJT
+    Call Tree:   Ejemplo 2 - Led fading.tre
+    Statistics:  Ejemplo 2 - Led fading.STA

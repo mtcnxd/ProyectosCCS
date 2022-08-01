@@ -1,0 +1,56 @@
+
+ROM used:   812 (2%)
+            812 (2%) including unused fragments
+
+            1 Average locations per line
+            9 Average locations per statement
+
+RAM used:   7 (0%) at main() level
+            25 (1%) worst case
+
+Stack used: 6/31 worst case (6 in main + 0 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   28    11  12  PWM.c
+  412     0   0  C:\Program Files\PICC\devices\18F2550.h
+  456    84  88  C:\Program Files\PICC\drivers\lcd.c
+----- -----
+  896    95 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   2   1   163  2.4  @delay_ms1
+0     20   1   0   163  2.4  @const75
+0     70   4   3   596  5.9  lcd_read_byte
+0     12   1   0    59  4.2  lcd_read_nibble
+0     32   2   1   179  3.3  lcd_send_nibble
+0     58   4   3   460  4.7  lcd_send_byte
+0     92   6   2   667  5.9  lcd_init
+0     34   2   4   208  6.3  lcd_gotoxy
+0     80   5   1   354  4.7  lcd_putc
+0    146   9   1   267  4.0  MAIN
+0     12   1   0   207  2.6  @const109
+0     32   2   3             @PSTRINGCN_93
+0    180  11   9             @PRINTF_LU_93
+ Inline        0             @cinit1
+
+Program metrics:
+    Functions               11
+    Statements              95
+    Comments                201
+    Volume (V)              5409
+    Difficulty (D)          45.1
+    Effort to implement (E) 244213
+    Time to implement (T)   3 hours, 46 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   9
+    Maintainability (MI)    120
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE   808  31956  
+
+
+

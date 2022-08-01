@@ -1,0 +1,26 @@
+ÀÄMainCode
+   ÀÄMAIN  0/334  Ram=4
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄinicio  0/80  Ram=1
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÀÄ@delay_ms1  0/20  Ram=1
+      ÃÄ@ITOF  0/31  Ram=2
+      ÃÄ@MULFF  0/117  Ram=13
+      ÃÄ@MULFF  0/117  Ram=13
+      ÃÄ@DIVFF  0/204  Ram=14
+      ÃÄ@SFTOI  0/33  Ram=4
+      ÃÄ@MUL1616  0/23  Ram=5
+      ÃÄ@DIV1616  0/37  Ram=5
+      ÃÄ@DIV1616  0/37  Ram=5
+      ÃÄ@DIV1616  0/37  Ram=5
+      ÃÄ@DIV1616  0/37  Ram=5
+      ÃÄDigitaNumero  0/73  Ram=2
+      ³  ÀÄ@goto10064  0/14  Ram=0
+      ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄDigitaNumero  0/73  Ram=2
+      ³  ÀÄ@goto10064  0/14  Ram=0
+      ÀÄ@delay_ms1  0/20  Ram=1

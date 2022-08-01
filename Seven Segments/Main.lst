@@ -1,0 +1,272 @@
+CCS PCM C Compiler, Version 4.140, 38880               08-dic-13 20:43
+
+               Filename:   D:\Electronica\CCS\Seven Segments\Main.lst
+
+               ROM used:   190 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   7 (2%) at main() level
+                           9 (2%) worst case
+               Stack:     2 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   071
+0003:  NOP
+.................... #include <16f886.h> 
+.................... //////// Standard Header file for the PIC16F886 device //////////////// 
+.................... #device PIC16F886 
+.................... #list 
+....................  
+.................... #device adc = 10; 
+.................... #fuses INTRC_IO, NOWDT, NOPUT, NOBROWNOUT, NOPROTECT, NOIESO, NOFCMEN, NOLVP, NODEBUG, NOWRT, NOMCLR 
+.................... #use delay(Internal = 8MHz) 
+*
+0004:  MOVLW  23
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  02
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  97
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+.................... #include <SevenSegment.h> 
+.................... void DigitaNumero (int Digito, int pinHigh) 
+.................... { 
+....................    output_c (pinHigh); 
+0018:  MOVLW  00
+0019:  MOVWF  20
+001A:  BSF    03.5
+001B:  CLRF   07
+001C:  BCF    03.5
+001D:  MOVF   23,W
+001E:  MOVWF  07
+....................     
+....................    switch (Digito) 
+....................    { 
+001F:  MOVF   22,W
+0020:  ADDLW  F6
+0021:  BTFSC  03.0
+0022:  GOTO   060
+0023:  ADDLW  0A
+0024:  GOTO   063
+....................       case 0: 
+....................       output_b (0x3F); 
+0025:  BSF    03.5
+0026:  CLRF   06
+0027:  MOVLW  3F
+0028:  BCF    03.5
+0029:  MOVWF  06
+....................       break; 
+002A:  GOTO   060
+....................  
+....................       case 1: 
+....................       output_b (0x06); 
+002B:  BSF    03.5
+002C:  CLRF   06
+002D:  MOVLW  06
+002E:  BCF    03.5
+002F:  MOVWF  06
+....................       break; 
+0030:  GOTO   060
+....................  
+....................       case 2: 
+....................       output_b (0x5B); 
+0031:  BSF    03.5
+0032:  CLRF   06
+0033:  MOVLW  5B
+0034:  BCF    03.5
+0035:  MOVWF  06
+....................       break; 
+0036:  GOTO   060
+....................  
+....................       case 3: 
+....................       output_b (0x4F); 
+0037:  BSF    03.5
+0038:  CLRF   06
+0039:  MOVLW  4F
+003A:  BCF    03.5
+003B:  MOVWF  06
+....................       break; 
+003C:  GOTO   060
+....................  
+....................       case 4: 
+....................       output_b (0x66); 
+003D:  BSF    03.5
+003E:  CLRF   06
+003F:  MOVLW  66
+0040:  BCF    03.5
+0041:  MOVWF  06
+....................       break; 
+0042:  GOTO   060
+....................  
+....................       case 5: 
+....................       output_b (0x6D); 
+0043:  BSF    03.5
+0044:  CLRF   06
+0045:  MOVLW  6D
+0046:  BCF    03.5
+0047:  MOVWF  06
+....................       break; 
+0048:  GOTO   060
+....................  
+....................       case 6: 
+....................       output_b (0x7D); 
+0049:  BSF    03.5
+004A:  CLRF   06
+004B:  MOVLW  7D
+004C:  BCF    03.5
+004D:  MOVWF  06
+....................       break; 
+004E:  GOTO   060
+....................  
+....................       case 7: 
+....................       output_b (0x07); 
+004F:  BSF    03.5
+0050:  CLRF   06
+0051:  MOVLW  07
+0052:  BCF    03.5
+0053:  MOVWF  06
+....................       break; 
+0054:  GOTO   060
+....................  
+....................       case 8: 
+....................       output_b (0x7F); 
+0055:  BSF    03.5
+0056:  CLRF   06
+0057:  MOVLW  7F
+0058:  BCF    03.5
+0059:  MOVWF  06
+....................       break; 
+005A:  GOTO   060
+....................  
+....................       case 9: 
+....................       output_b (0x6F); 
+005B:  BSF    03.5
+005C:  CLRF   06
+005D:  MOVLW  6F
+005E:  BCF    03.5
+005F:  MOVWF  06
+....................       break; 
+....................    } 
+.................... } 
+0060:  BCF    0A.3
+0061:  BCF    0A.4
+0062:  GOTO   0B3 (RETURN)
+....................  
+....................  
+....................  
+.................... void main ()  
+.................... { 
+*
+0071:  CLRF   04
+0072:  BCF    03.7
+0073:  MOVLW  1F
+0074:  ANDWF  03,F
+0075:  MOVLW  71
+0076:  BSF    03.5
+0077:  MOVWF  0F
+0078:  MOVF   0F,W
+0079:  MOVLW  FF
+007A:  BCF    03.5
+007B:  MOVWF  20
+007C:  BSF    03.5
+007D:  BSF    03.6
+007E:  MOVF   09,W
+007F:  ANDLW  C0
+0080:  MOVWF  09
+0081:  BCF    03.6
+0082:  BCF    1F.4
+0083:  BCF    1F.5
+0084:  MOVLW  00
+0085:  BSF    03.6
+0086:  MOVWF  08
+0087:  BCF    03.5
+0088:  CLRF   07
+0089:  CLRF   08
+008A:  CLRF   09
+....................  
+....................    setup_adc(ADC_CLOCK_INTERNAL); 
+008B:  BCF    03.6
+008C:  BSF    1F.6
+008D:  BSF    1F.7
+008E:  BSF    03.5
+008F:  BSF    1F.7
+0090:  BCF    03.5
+0091:  BSF    1F.0
+....................    setup_adc_ports(sAN0); 
+0092:  BSF    03.5
+0093:  BSF    03.6
+0094:  MOVF   09,W
+0095:  ANDLW  C0
+0096:  MOVWF  09
+0097:  BCF    03.6
+0098:  BCF    1F.4
+0099:  BCF    1F.5
+009A:  MOVLW  01
+009B:  BSF    03.6
+009C:  MOVWF  08
+....................    setup_vref(FALSE); 
+009D:  BCF    03.6
+009E:  CLRF   17
+....................     
+....................    set_adc_channel(0); 
+009F:  MOVLW  00
+00A0:  MOVWF  78
+00A1:  BCF    03.5
+00A2:  MOVF   1F,W
+00A3:  ANDLW  C3
+00A4:  IORWF  78,W
+00A5:  MOVWF  1F
+....................    delay_ms (5); 
+00A6:  MOVLW  05
+00A7:  MOVWF  23
+00A8:  CALL   004
+....................     
+....................    while (true) 
+....................    {   
+....................       for (int i=0; i<=9; i++) 
+00A9:  CLRF   21
+00AA:  MOVF   21,W
+00AB:  SUBLW  09
+00AC:  BTFSS  03.0
+00AD:  GOTO   0BC
+....................       { 
+....................          DigitaNumero(i, 0x20); 
+00AE:  MOVF   21,W
+00AF:  MOVWF  22
+00B0:  MOVLW  20
+00B1:  MOVWF  23
+00B2:  GOTO   018
+....................          delay_ms (2000); 
+00B3:  MOVLW  08
+00B4:  MOVWF  22
+00B5:  MOVLW  FA
+00B6:  MOVWF  23
+00B7:  CALL   004
+00B8:  DECFSZ 22,F
+00B9:  GOTO   0B5
+....................       } 
+00BA:  INCF   21,F
+00BB:  GOTO   0AA
+....................    } 
+00BC:  GOTO   0A9
+.................... } 
+....................  
+00BD:  SLEEP
+
+Configuration Fuses:
+   Word  1: 20D4   INTRC_IO NOWDT NOPUT NOMCLR NOPROTECT NOCPD NOBROWNOUT NOIESO NOFCMEN NOLVP NODEBUG
+   Word  2: 3FFF   BORV40 NOWRT

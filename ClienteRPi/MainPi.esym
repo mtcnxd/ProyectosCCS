@@ -1,0 +1,7 @@
+D G "__PCM__" 1 205 ""4.140""
+D G "__DEVICE__" 1 205 ""
+D G "__DATE__" 1 205 ""24-sep-14""
+D G "__TIME__" 1 205 ""23:34:48""
+F G "main" 0 4 "void()"
+V L "dato" 0 5 "int8"
+C L "main" 0 9 1 "FUNCTION"

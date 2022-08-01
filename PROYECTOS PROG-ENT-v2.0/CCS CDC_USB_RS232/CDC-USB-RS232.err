@@ -1,0 +1,7 @@
+>>> Warning 203 "C:\Program Files (x86)\PICC4.110\drivers\pic18_usb.c" Line 531(1,1): Condition always TRUE
+>>> Warning 216 "CDC-USB-RS232.c" Line 48(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_token_reset)
+>>> Warning 216 "CDC-USB-RS232.c" Line 48(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_tbe)
+>>> Warning 216 "CDC-USB-RS232.c" Line 48(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_cdc_flush_out_buffer)
+>>> Warning 202 "CDC-USB-RS232.c" Line 17(6,11): Variable never used:   envia
+      Memory usage:   ROM=14%      RAM=20% - 23%
+      0 Errors,  5 Warnings.

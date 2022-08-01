@@ -1,0 +1,115 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019-01C retardo
+01D-020 @DIVFF.P1
+01D     @READBITA.P2
+01D-01E @ITOF.P3
+01D     @WRITEBITA.P4
+01D     analogRead._Channel
+01D     interrupt_ext0.@SCRATCH1
+01E     @delay_ms1.P1
+01E-01F analogRead._adcReading
+01E     @WRITEBITA.P1
+01E-01F @READBITA.P2
+01E     interrupt_ext0.@SCRATCH2
+01F-020 @WRITEBITA.P1
+01F     interrupt_ext0.@SCRATCH3
+020     interrupt_ext0.@SCRATCH4
+021-024 @MULFF.P1
+021-024 @DIVFF.P2
+025     g_InBootloader
+026-029 @MULFF.P1
+026     @DIVFF.@SCRATCH1
+027     @DIVFF.@SCRATCH2
+028     @DIVFF.@SCRATCH3
+029     @DIVFF.@SCRATCH4
+02A     @MULFF.@SCRATCH1
+02A     @DIVFF.@SCRATCH5
+02B     @MULFF.@SCRATCH2
+02B     @DIVFF.@SCRATCH6
+02C     @MULFF.@SCRATCH3
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+002386  @delay_ms1
+0020FE  @ITOF
+002292  @MULFF
+002136  @DIVFF
+0020AE  analogRead
+0023AE  interrupt_ext0
+002450  MAIN
+002450  @cinit1
+002466  @cinit2
+
+Project Directory:
+    D:\Electronica\CCS\PracticasRedes\
+
+Project Files:
+    ADC_PWM_CDC.c                                           [14-oct-13 15:43  CRC=2F17C8D8]
+    C:\Program Files\PICC\drivers\G-PiC Lite!.c             [04-oct-13 12:59  CRC=75C148CC]
+    C:\Program Files\PICC\devices\18F4550.h                 [07-jul-13 21:46  CRC=DCD1BB11]
+    C:\Program Files\PICC\drivers\usb\usb_bootloader.h      [09-mar-12 02:05  CRC=933A968C]
+
+Source signature=A81FF9CD
+
+Units:
+    ADC_PWM_CDC (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      ADC_PWM_CDC.err
+    Ext Symbols: ADC_PWM_CDC.esym
+    INHX32:      ADC_PWM_CDC.hex
+    Symbols:     ADC_PWM_CDC.sym
+    List:        ADC_PWM_CDC.lst
+    Debug/COFF:  ADC_PWM_CDC.cof
+    Project:     ADC_PWM_CDC.PJT
+    Call Tree:   ADC_PWM_CDC.tre
+    Statistics:  ADC_PWM_CDC.STA

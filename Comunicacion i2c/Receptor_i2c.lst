@@ -1,0 +1,125 @@
+CCS PCH C Compiler, Version 4.140, 38880               06-sep-13 23:59
+
+               Filename:   D:\Electronica\CCS\Comunicacion i2c\Receptor_i2c.lst
+
+               ROM used:   378 bytes (1%)
+                           Largest free fragment is 28290
+               RAM used:   8 (0%) at main() level
+                           18 (1%) worst case
+               Stack:     2 locations
+
+*
+1000:  GOTO   10F8
+.................... #include <18F2550.h> 
+.................... //////// Standard Header file for the PIC18F2550 device //////////////// 
+.................... #device PIC18F2550 
+.................... #list 
+....................  
+.................... #fuses HSPLL,NOWDT,NOPROTECT,NOLVP,NODEBUG,USBDIV,PLL2,CPUDIV1,VREGEN,NOPBADEN   
+.................... #use delay(clock=48000000)  
+....................  
+.................... #define LOADER_SIZE 0x1000       //4096 Bytes. 
+.................... #build(reset=LOADER_SIZE, interrupt=LOADER_SIZE+0x08) 
+.................... #org 0, (LOADER_SIZE-1) {} 
+.................... #use i2c (slave, sda=PIN_B0, scl=PIN_B1, slow, address=0xa0) 
+.................... #use rs232(UART1, baud=9600, DISABLE_INTS, errors) 
+*
+101C:  BTFSS  F9E.4
+101E:  BRA    101C
+1020:  MOVFF  11,FAD
+1024:  RETURN 0
+....................  
+.................... void main() { 
+*
+10F8:  CLRF   FF8
+10FA:  BCF    FD0.7
+10FC:  CLRF   FEA
+10FE:  CLRF   FE9
+1100:  BSF    F93.1
+1102:  BSF    F93.0
+1104:  MOVLW  A0
+1106:  MOVWF  FC8
+1108:  MOVLW  36
+110A:  MOVWF  FC6
+110C:  BSF    FC5.0
+110E:  CLRF   04
+1110:  BSF    FB8.3
+1112:  MOVLW  E1
+1114:  MOVWF  FAF
+1116:  MOVLW  04
+1118:  MOVWF  FB0
+111A:  MOVLW  A6
+111C:  MOVWF  FAC
+111E:  MOVLW  90
+1120:  MOVWF  FAB
+1122:  MOVF   FC1,W
+1124:  ANDLW  C0
+1126:  IORLW  0F
+1128:  MOVWF  FC1
+112A:  MOVLW  07
+112C:  MOVWF  FB4
+112E:  CLRF   07
+1130:  CLRF   06
+....................  
+....................    int dato; 
+....................    int16 contador = 0; 
+....................     
+....................    while (true) { 
+....................     
+....................       // Recepción por comunicación I2C      
+....................       if(i2c_poll()) { 
+1132:  BTFSS  FC7.0
+1134:  BRA    117A
+....................  
+....................          dato=i2c_read(); 
+1136:  BCF    FC6.6
+1138:  BTFSS  F9E.3
+113A:  BRA    1138
+113C:  MOVF   FC9,W
+113E:  BSF    FC6.4
+1140:  MOVWF  05
+....................          if (dato == 1) { 
+1142:  DECFSZ 05,W
+1144:  BRA    117A
+....................             output_toggle(PIN_C1); 
+1146:  BCF    F94.1
+1148:  BTG    F8B.1
+....................             contador ++; 
+114A:  INCF   06,F
+114C:  BTFSC  FD8.2
+114E:  INCF   07,F
+....................             printf("Contador: %Lu   \r\f", contador); 
+1150:  MOVLW  08
+1152:  MOVWF  FF6
+1154:  MOVLW  10
+1156:  MOVWF  FF7
+1158:  MOVLW  0A
+115A:  MOVWF  08
+115C:  RCALL  1026
+115E:  MOVLW  10
+1160:  MOVWF  FE9
+1162:  MOVFF  07,09
+1166:  MOVFF  06,08
+116A:  BRA    1044
+116C:  MOVLW  15
+116E:  MOVWF  FF6
+1170:  MOVLW  10
+1172:  MOVWF  FF7
+1174:  MOVLW  05
+1176:  MOVWF  08
+1178:  RCALL  1026
+....................          } 
+....................       } 
+....................    } 
+117A:  BRA    1132
+.................... } 
+117C:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CE21   PLL2 CPUDIV1 USBDIV HSPLL FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8500   CCP2C1 NOPBADEN LPT1OSC MCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

@@ -1,0 +1,64 @@
+
+ROM used:   1016 (3%)
+            1020 (3%) including unused fragments
+
+            1 Average locations per line
+            10 Average locations per statement
+
+RAM used:   7 (0%) at main() level
+            22 (1%) worst case
+
+Stack used: 6/31 worst case (6 in main + 0 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   42    17  17  MainCode.c
+  412     0   0  C:\Program Files\PICC\devices\18F2550.h
+  456    84  83  C:\Program Files\PICC\drivers\lcd.c
+----- -----
+  910   101 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   2   1             @delay_ms1
+0     12   1   1             @PUTCHAR_BIU_1
+0     20   1   0   112  3.3  @const82
+0     70   3   3   596  5.9  lcd_read_byte
+0     12   1   0    59  4.2  lcd_read_nibble
+0     32   2   1   179  3.3  lcd_send_nibble
+0     58   3   3   460  4.7  lcd_send_byte
+0     92   5   2   667  5.9  lcd_init
+0     34   2   4   208  6.3  lcd_gotoxy
+0     80   4   1   354  4.7  lcd_putc
+0     62   3   2   104  1.9  write_data_eeprom
+0     32   2   2    47  2.1  read_data_eeprom
+0    128   6   1   236  3.0  MAIN
+0     12   1   0   142  4.7  @const121
+0     34   2   2   165  2.9  @PSTRINGC_100
+0     38   2   2   165  2.9  @PSTRINGR_65
+0     12   1   0   165  2.9  @const124
+0     32   2   3             @PSTRINGCN_100
+0     40   2   3             @DIV88
+0    172   8   6             @PRINTF_D_100
+ Inline        0             @cinit1
+
+Program metrics:
+    Functions               15
+    Statements              101
+    Comments                200
+    Volume (V)              6304
+    Difficulty (D)          58.6
+    Effort to implement (E) 369661
+    Time to implement (T)   5 hours, 42 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   13
+    Maintainability (MI)    79
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00FFE     0  4096  
+01000-01006     4  4  
+01008-07FFE  1012  27652  
+
+
+

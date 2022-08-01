@@ -1,0 +1,120 @@
+
+ROM used:   4806 (15%)
+            4810 (15%) including unused fragments
+
+            1 Average locations per line
+            5 Average locations per statement
+
+RAM used:   240 (12%) at main() level
+            274 (13%) worst case
+
+Stack used: 14/31 worst case (5 in main + 9 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   30     7   1  KeyboardTaskSwitcher.c
+  124    10   1  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\G-PiC Lite!.c
+  464     0   0  C:\Program Files (x86)\PICC\devices\18F4550.h
+  132     0   0  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\usb_bootloader.h
+   97    13   1  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\Arduino Functions.c
+  338   170  17  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\analogWrite.c
+   34    10   1  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\SensorModules.c
+  182    95  10  ..\..\..\..\..\CCS\_Libraries\G-PiC USB HID\G-PiC KeyboardMouse Library\G-PiC KeyboardMouse.c
+  360     0   0  ..\..\..\..\..\CCS\_Libraries\G-PiC USB HID\G-PiC KeyboardMouse Library\KeyboardMouse_Descriptor.h
+  222     0   0  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\pic18_usb.h
+  328     0   0  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\usb_hw_layer.h
+ 1063     0   0  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\usb.h
+  808   246  25  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\usb.c
+ 1281   320  33  ..\..\..\..\..\CCS\_Libraries\G-PiC Libraries [Basic]\usb\pic18_usb.c
+  110     0   0  ..\..\..\..\..\CCS\_Libraries\G-PiC USB HID\G-PiC KeyboardMouse Library\KeyboardKeys.h
+   69   113  11  ..\..\..\..\..\CCS\_Libraries\G-PiC USB HID\G-PiC KeyboardMouse Library\KeyboardMacros.c
+----- -----
+ 5642   984 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   0   1             @delay_ms1
+0    266   3   0  1663  3.8  Timer3_Interrupt
+0     32   0   0             @const263
+0     32   0   0             @const266
+0     48   0   0             @const269
+0     48   0   0             @const272
+0    132   1   0             @const275
+0     20   0   0             @const278
+0     20   0   0             @const282
+0     82   1   0             @const286
+0     18   0   0             @const289
+0     20   0   0             @const292
+0     34   0   0             @const297
+0     20   0   0             @const300
+0     82   1   0             @const303
+0     64   1   4   133  4.3  usb_tbe
+0     36   0   1   134  2.5  usb_detach
+0     34   0   0   136  2.2  usb_attach
+0      6   0   0    16  1.0  usb_init_cs
+0     36   0   1   346  4.6  usb_task
+0     14   0   0    61  2.5  usb_init
+0    210   2   9  1083  5.4  usb_flush_in
+0    160   2  10   320  5.5  usb_put_packet
+0    184   2   9   899  4.9  usb_flush_out
+0     70   1   6   251  4.6  usb_stall_ep
+0     68   1   6   258  4.6  usb_unstall_ep
+0     86   1   5   360  5.8  usb_endpoint_stalled
+0     22   0   1    88  2.7  usb_set_address
+0    370   4  12  1722  9.8  usb_set_configured
+0     76   1   5   192  3.2  usb_disable_endpoint
+0     22   0   1    93  2.9  usb_disable_endpoints
+0      4   0   0    39  2.0  usb_clear_trn
+0    126   1   2   638  6.6  usb_isr
+0      6   0   0    43  2.0  usb_isr_sof
+0     42   0   0   357  4.2  usb_isr_rst
+0     32   0   0   508  4.0  usb_init_ep0_setup
+0      8   0   0    74  2.8  usb_isr_uerr
+0     10   0   0    82  2.8  usb_isr_uidle
+0     16   0   0   102  3.3  usb_isr_activity
+0     14   0   0   151  3.9  usb_isr_stall
+0      6   0   1    30  1.7  usb_request_send_response
+0      4   0   0    22  1.2  usb_request_stall
+0    326   3   8  2031  7.9  usb_isr_tok_dne
+0     38   0   3   231  4.0  usb_token_reset
+0     66   1   3   267  5.9  usb_endpoint_is_valid
+0     22   0   1   152  3.0  usb_isr_tok_in_dne
+0      6   0   1    48  1.9  usb_isr_tok_out_dne
+0     50   1   0   336  5.5  usb_isr_tok_setup_dne
+0    164   2   0  1454  8.3  usb_isr_tkn_setup_StandardDevice
+0    148   2   3   993  7.8  usb_isr_tkn_setup_StandardInterface
+0     94   1   0   753  5.8  usb_isr_tkn_setup_StandardEndpoint
+0     12   0   0   105  3.8  usb_isr_tkn_setup_ClassInterface
+0    204   2   0  1492  8.8  usb_Get_Descriptor
+0     14   0   0    76  1.8  usb_finish_set_address
+0    108   1   4   783  3.4  usb_copy_desc_seg_to_ep
+0     34   0   0             @goto11456
+0     20   0   1    27  0.9  keyboard_begin
+0    464   5   1  2498  6.4  charToKey
+0     36   0   0   134  3.0  keyboard_releaseAll
+0     84   1   1   408  6.6  keyboard_press
+0     24   0   0    61  1.2  keyboard_switch_task
+0     90   1   1    96  2.4  MAIN
+ Inline        0             @cinit1
+
+Program metrics:
+    Functions               47
+    Statements              984
+    Comments                3708
+    Volume (V)              39293
+    Difficulty (D)          194.3
+    Effort to implement (E) 7635670
+    Time to implement (T)   117 hours, 50 minutes
+    Est Delivered Bugs (B)  13
+    Cyclomatic Complexity   169
+    Maintainability (MI)    132
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-01FFE     0  8192  
+02000-02006     4  4  
+02008-020B8   178  0  
+020BA-07FFE  4624  19766  
+
+
+

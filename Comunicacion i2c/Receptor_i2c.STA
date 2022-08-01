@@ -1,0 +1,48 @@
+
+ROM used:   378 (1%)
+            382 (1%) including unused fragments
+
+            1 Average locations per line
+            38 Average locations per statement
+
+RAM used:   8 (0%) at main() level
+            18 (1%) worst case
+
+Stack used: 2/31 worst case (2 in main + 0 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   30    10 100  Receptor_i2c.c
+  412     0   0  C:\Program Files\PICC\devices\18F2550.h
+----- -----
+  442    10 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     10   1   1   123  2.9  @PUTCHAR_BIU_1
+0    134  18   3   209  3.8  main
+0     20   3   0             @const79
+0     30   4   3             @PSTRINGCN_67
+0    180  24   9     3  0.0  @PRINTF_LU_67
+ Inline        0             @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              10
+    Comments                101
+    Volume (V)              426
+    Difficulty (D)          6.8
+    Effort to implement (E) 2875
+    Time to implement (T)   3 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   4
+    Maintainability (MI)    147
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00FFE     0  4096  
+01000-01006     4  4  
+01008-07FFE   374  28290  
+
+
+

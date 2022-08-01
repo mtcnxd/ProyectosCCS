@@ -1,0 +1,281 @@
+CCS PCH C Compiler, Version 4.140, 25498               26-may-15 12:17
+
+               Filename:   D:\Dropbox\Electrónica\CCS\Examen Juanqui\main.lst
+
+               ROM used:   450 bytes (2%)
+                           Largest free fragment is 20026
+               RAM used:   29 (1%) at main() level
+                           31 (2%) worst case
+               Stack:     2 worst case (1 in main + 1 for interrupts)
+
+*
+1000:  GOTO   1106
+*
+1008:  MOVWF  04
+100A:  MOVFF  FD8,05
+100E:  MOVFF  FE0,06
+1012:  MOVLB  0
+1014:  MOVFF  FE9,0C
+1018:  MOVFF  FEA,07
+101C:  MOVFF  FE1,08
+1020:  MOVFF  FE2,09
+1024:  MOVFF  FD9,0A
+1028:  MOVFF  FDA,0B
+102C:  MOVFF  FF3,12
+1030:  MOVFF  FF4,13
+1034:  MOVFF  FFA,14
+1038:  MOVFF  FF5,15
+103C:  MOVFF  FF6,16
+1040:  MOVFF  FF7,17
+1044:  MOVFF  00,0E
+1048:  MOVFF  01,0F
+104C:  MOVFF  02,10
+1050:  MOVFF  03,11
+1054:  BTFSS  FF2.5
+1056:  GOTO   1060
+105A:  BTFSC  FF2.2
+105C:  GOTO   10C4
+1060:  BTFSS  FF2.4
+1062:  GOTO   106C
+1066:  BTFSC  FF2.1
+1068:  GOTO   10BA
+106C:  MOVFF  0E,00
+1070:  MOVFF  0F,01
+1074:  MOVFF  10,02
+1078:  MOVFF  11,03
+107C:  MOVFF  0C,FE9
+1080:  MOVFF  07,FEA
+1084:  BSF    07.7
+1086:  MOVFF  08,FE1
+108A:  MOVFF  09,FE2
+108E:  MOVFF  0A,FD9
+1092:  MOVFF  0B,FDA
+1096:  MOVFF  12,FF3
+109A:  MOVFF  13,FF4
+109E:  MOVFF  14,FFA
+10A2:  MOVFF  15,FF5
+10A6:  MOVFF  16,FF6
+10AA:  MOVFF  17,FF7
+10AE:  MOVF   04,W
+10B0:  MOVFF  06,FE0
+10B4:  MOVFF  05,FD8
+10B8:  RETFIE 0
+.................... #include <18F2455.h> 
+.................... //////// Standard Header file for the PIC18F2455 device //////////////// 
+.................... #device PIC18F2455 
+.................... #list 
+....................  
+.................... #fuses HSPLL,NOWDT,NOPROTECT,NOLVP,NODEBUG,USBDIV,PLL2,CPUDIV1,VREGEN,NOPBADEN 
+.................... #use delay(clock=48000000) 
+*
+10DE:  CLRF   FEA
+10E0:  MOVLW  1E
+10E2:  MOVWF  FE9
+10E4:  MOVF   FEF,W
+10E6:  BZ    1104
+10E8:  MOVLW  0F
+10EA:  MOVWF  01
+10EC:  CLRF   00
+10EE:  DECFSZ 00,F
+10F0:  BRA    10EE
+10F2:  DECFSZ 01,F
+10F4:  BRA    10EC
+10F6:  MOVLW  8F
+10F8:  MOVWF  00
+10FA:  DECFSZ 00,F
+10FC:  BRA    10FA
+10FE:  NOP   
+1100:  DECFSZ FEF,F
+1102:  BRA    10E8
+1104:  RETURN 0
+....................  
+.................... #define LOADER_SIZE 0x1000    //4096 Bytes. 
+.................... #build(reset=LOADER_SIZE, interrupt=LOADER_SIZE+0x08) 
+.................... #org 0, (LOADER_SIZE-1) {} 
+....................  
+.................... #define ledRed PIN_C0 
+.................... #define ledGreen PIN_C1 
+.................... #define ledBlue PIN_C2 
+.................... #define ledRun PIN_B6 
+....................  
+.................... int minValue = 400; 
+.................... int maxValue = 700; 
+.................... int timerToggle = 0; 
+.................... int objectDetect = 0; 
+....................  
+.................... #INT_EXT 
+.................... void interrupt_ext0() { 
+....................    objectDetect = 1; 
+*
+10BA:  MOVLW  01
+10BC:  MOVWF  1C
+.................... } 
+....................  
+10BE:  BCF    FF2.1
+10C0:  GOTO   106C
+.................... #INT_TIMER0 
+.................... void interrupt_timer1() { 
+....................    set_timer0(0);                      // Reinicia el contador del Timer0 
+10C4:  CLRF   FD7
+10C6:  CLRF   FD6
+....................    if (timerToggle == 20){  
+10C8:  MOVF   1B,W
+10CA:  SUBLW  14
+10CC:  BNZ   10D6
+....................       output_toggle(ledRun); 
+10CE:  BCF    F93.6
+10D0:  BTG    F8A.6
+....................       timerToggle = 0; 
+10D2:  CLRF   1B
+....................    } else { 
+10D4:  BRA    10D8
+....................       timerToggle++; 
+10D6:  INCF   1B,F
+....................    } 
+.................... } 
+....................  
+10D8:  BCF    FF2.2
+10DA:  GOTO   106C
+.................... void main(){ 
+*
+1106:  CLRF   FF8
+1108:  BCF    FD0.7
+110A:  BSF    07.7
+110C:  CLRF   FEA
+110E:  CLRF   FE9
+1110:  MOVLW  90
+1112:  MOVWF  19
+1114:  MOVLW  BC
+1116:  MOVWF  1A
+1118:  CLRF   1B
+111A:  CLRF   1C
+111C:  MOVF   FC1,W
+111E:  ANDLW  C0
+1120:  IORLW  0F
+1122:  MOVWF  FC1
+1124:  MOVLW  07
+1126:  MOVWF  FB4
+....................  
+....................    setup_adc( ADC_CLOCK_INTERNAL ); 
+1128:  MOVF   FC0,W
+112A:  ANDLW  C0
+112C:  IORLW  07
+112E:  MOVWF  FC0
+1130:  BCF    FC0.7
+1132:  BSF    FC2.0
+....................    setup_adc_ports( AN0 ); 
+1134:  MOVF   FC1,W
+1136:  ANDLW  C0
+1138:  IORLW  0E
+113A:  MOVWF  FC1
+....................    set_adc_channel( 0 ); 
+113C:  MOVLW  00
+113E:  MOVWF  01
+1140:  MOVF   FC2,W
+1142:  ANDLW  C3
+1144:  IORWF  01,W
+1146:  MOVWF  FC2
+....................    delay_us( 10 ); 
+1148:  MOVLW  27
+114A:  MOVWF  00
+114C:  DECFSZ 00,F
+114E:  BRA    114C
+1150:  BRA    1152
+....................     
+....................    setup_timer_0(T0_INTERNAL | T0_DIV_4);   // T0_DIV_4 indica un Prescaler = 4 
+1152:  MOVLW  81
+1154:  MOVWF  FD5
+....................    set_timer0(0);                            // En esta función ponemos el valor de CuentaInicial 
+1156:  CLRF   FD7
+1158:  CLRF   FD6
+....................     
+....................    enable_interrupts(GLOBAL); 
+115A:  MOVLW  C0
+115C:  IORWF  FF2,F
+....................    enable_interrupts(INT_TIMER0);      // Habilita interrupció TIMER1 
+115E:  BSF    FF2.5
+....................    enable_interrupts(INT_EXT);      // Habilita interrupció TIMER1 
+1160:  BSF    FF2.4
+....................  
+....................    while(true){ 
+....................        
+....................       if (objectDetect == 1){ 
+1162:  DECFSZ 1C,W
+1164:  BRA    11C2
+....................          int sensorValue = read_adc(); 
+1166:  BSF    FC2.1
+1168:  BTFSC  FC2.1
+116A:  BRA    1168
+116C:  MOVFF  FC4,1D
+....................           
+....................          if (sensorValue > minValue && sensorValue < maxValue){ 
+1170:  MOVF   1D,W
+1172:  SUBWF  19,W
+1174:  BC    1190
+1176:  MOVF   1A,W
+1178:  SUBWF  1D,W
+117A:  BC    1190
+....................             output_high(ledGreen); 
+117C:  BCF    F94.1
+117E:  BSF    F8B.1
+....................             output_low(ledBlue); 
+1180:  BCF    F94.2
+1182:  BCF    F8B.2
+....................             output_low(ledRed); 
+1184:  BCF    F94.0
+1186:  BCF    F8B.0
+....................             delay_ms(10); 
+1188:  MOVLW  0A
+118A:  MOVWF  1E
+118C:  RCALL  10DE
+....................          } else if (sensorValue < minValue){ 
+118E:  BRA    11C2
+1190:  MOVF   19,W
+1192:  SUBWF  1D,W
+1194:  BC    11AA
+....................             output_high(ledBlue); 
+1196:  BCF    F94.2
+1198:  BSF    F8B.2
+....................             output_low(ledGreen); 
+119A:  BCF    F94.1
+119C:  BCF    F8B.1
+....................             output_low(ledRed); 
+119E:  BCF    F94.0
+11A0:  BCF    F8B.0
+....................             delay_ms(10); 
+11A2:  MOVLW  0A
+11A4:  MOVWF  1E
+11A6:  RCALL  10DE
+....................          } else if (sensorValue > maxValue){ 
+11A8:  BRA    11C2
+11AA:  MOVF   1D,W
+11AC:  SUBWF  1A,W
+11AE:  BC    11C2
+....................             output_high(ledRed); 
+11B0:  BCF    F94.0
+11B2:  BSF    F8B.0
+....................             output_low(ledBlue); 
+11B4:  BCF    F94.2
+11B6:  BCF    F8B.2
+....................             output_low(ledGreen); 
+11B8:  BCF    F94.1
+11BA:  BCF    F8B.1
+....................             delay_ms(10); 
+11BC:  MOVLW  0A
+11BE:  MOVWF  1E
+11C0:  RCALL  10DE
+....................          } 
+....................       } 
+....................    } 
+11C2:  BRA    1162
+.................... } 
+11C4:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CE21   PLL2 CPUDIV1 USBDIV HSPLL FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8500   CCP2C1 NOPBADEN LPT1OSC MCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

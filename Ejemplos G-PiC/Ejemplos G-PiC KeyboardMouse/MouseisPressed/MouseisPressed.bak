@@ -1,0 +1,42 @@
+/**
+   MouseisPressed
+   
+   Checa el estado actual del botón del mouse especificado y reporta si éste
+   está presionado.
+   
+   mouse_isPressed() verifica por default el botón izquierdo.
+   
+   Hardware
+   Pin_A1   Push button con resistencia de pull-up
+   Pin_A2   Push button con resistencia de pull-up
+   
+   Para mayor información, favor de consultar el archivo Mouse_Library.c.
+   Este ejemplo está basado en la librería Arduino MouseKeyboard
+      +  http://arduino.cc/en/Reference/MouseKeyboard
+     
+*/
+#include <G-PiC Lite!.c>
+#include <G-PiC KeyboardMouse.c>
+
+#define ledPin       Pin_A4   // LED que indica si que el botón está presionado
+#define pressPin     Pin_A1   // Switch utilizado para presionar el botón
+#define releasePin   Pin_A2   // Switch utilizado para libera el botón
+
+void main() {
+   KeyboardMouse_begin();
+   
+   while(true) {
+      if(digitalRead(pressPin) == 0) {
+         mouse_press();                // Presiona el botón izquierdo del mouse
+         delay_ms(100); 
+      }
+      
+      if(digitalRead(releasePin) == 0) {
+         mouse_release();              // Libera los botones del mouse
+         delay_ms(100); 
+      }
+      
+      // El LED del Pin_A4 se apaga si el botón está presionado
+      digitalWrite(ledPin, mouse_isPressed());
+   }
+}

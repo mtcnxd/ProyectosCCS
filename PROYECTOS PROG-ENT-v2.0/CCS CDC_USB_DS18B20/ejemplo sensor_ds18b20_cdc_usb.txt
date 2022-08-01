@@ -1,0 +1,20 @@
+Este ejemplo despliega la temperatura en LabView a traves de un puerto COM virtual en windows.
+
+Tendras que colocar los archivos de las librerías 1wire.c y DS1820.c en la misma carpeta que tu código de 
+programa CDC_USB_DS18B20.c para poder compilarlo, de lo contrario te marcará error.
+
+Despues de descargar el archivo hex al entrenador, windows lo detectará como nuevo dispositivo usb,
+en ese momento pedira que se instale un driver el cual debera instalarse de forma manual. Este driver
+se encuentra en la carpeta del ejemplo con varias carpetas dependiendo la versión de windows
+
+Una vez instalado el driver, windows instalara un puerto serial COM.
+
+En el programa de LAbView (con el complemento VISA previamente instalado para que detecte el hardware de la PC)
+seleccionar el puerto serial COM dado de alta en Windows cuando se conectó  el entrenador.
+
+Selecciona la velocidad de transmisión siguiente: 9600bps, 8 bits de datos, 1bit de paro, sin paridad
+
+Ejecutar el programa dando un click a la flecha verde y automáticamente se desplegará la información de la 
+temperatura medida por el sensor DS18B20 en el termómetro virtual.
+
+Nota: Recuerda colocar una resistencia de PULL-UP de 4.7K en la salida del sensor DS18B20.

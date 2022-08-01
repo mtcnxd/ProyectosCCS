@@ -1,0 +1,14 @@
+>>> Warning 203 "C:\Program Files\PICC\drivers\pic18_usb.c" Line 616(1,1): Condition always TRUE
+>>> Warning 225 "usb_HID.c" Line 8(31,35): Duplicate #define
+>>> Warning 225 "usb_HID.c" Line 9(31,35): Duplicate #define
+>>> Warning 225 "usb_HID.c" Line 10(23,28): Duplicate #define
+>>> Warning 225 "usb_HID.c" Line 11(26,47): Duplicate #define
+>>> Warning 225 "usb_HID.c" Line 12(24,26): Duplicate #define
+>>> Warning 225 "usb_HID.c" Line 13(26,47): Duplicate #define
+>>> Warning 225 "usb_HID.c" Line 14(24,26): Duplicate #define
+>>> Warning 216 "usb_HID.c" Line 49(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_token_reset)
+>>> Warning 216 "usb_HID.c" Line 49(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_tbe)
+>>> Warning 216 "usb_HID.c" Line 49(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_flush_in)
+      Memory usage:   ROM=12%      RAM=11% - 13%
+      0 Errors,  11 Warnings.
+Build Successful.

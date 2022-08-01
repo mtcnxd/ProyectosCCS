@@ -1,0 +1,47 @@
+
+ROM used:   246 (1%)
+            246 (1%) including unused fragments
+
+            1 Average locations per line
+            27 Average locations per statement
+
+RAM used:   25 (1%) at main() level
+            25 (1%) worst case
+
+Stack used: 1/31 worst case (0 in main + 1 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   34     9 100  WatchDog.c
+  412     0   0  C:\Program Files\PICC\devices\18F2550.h
+----- -----
+  446     9 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     10   2   0    17  0.8  interrupt_timer0
+0     10   2   0    17  0.8  interrupt_ext0
+0     44   9   0   125  2.2  MAIN
+ Inline        0   179  3.3  @cinit1
+
+Program metrics:
+    Functions               4
+    Statements              9
+    Comments                110
+    Volume (V)              469
+    Difficulty (D)          7.7
+    Effort to implement (E) 3595
+    Time to implement (T)   3 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    181
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-000B8   178  0  
+000BA-07FFE    64  32518  
+
+
+

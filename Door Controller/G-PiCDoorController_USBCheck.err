@@ -1,0 +1,7 @@
+>>> Warning 203 "D:\Electronica\CCS\Door Controller\usb\pic18_usb.c" Line 531(1,1): Condition always TRUE
+>>> Warning 216 "G-PiCDoorController_USBCheck.c" Line 93(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_token_reset)
+>>> Warning 216 "G-PiCDoorController_USBCheck.c" Line 93(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_cdc_get_discard)
+>>> Warning 202 "G-PiCDoorController_USBCheck.c" Line 16(18,29): Variable never used:   usbChecking
+      Memory usage:   ROM=26%      RAM=40% - 44%
+      0 Errors,  4 Warnings.
+Build Successful.

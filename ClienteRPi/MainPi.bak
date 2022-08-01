@@ -1,0 +1,19 @@
+#include <G-PiC Lite!.c>
+#use i2c (slave, sda=PIN_B0, scl=PIN_B1, slow, address=0x04)
+
+void main() {
+   int dato;
+   
+   while (true) {
+   
+      // Recepción por comunicación I2C     
+      if(i2c_poll()) {
+
+         dato=i2c_read();
+         if (dato == 1) {
+            output_toggle(PIN_A4);
+            delay_ms(500);
+         }
+      }
+   }
+}

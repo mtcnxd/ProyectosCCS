@@ -1,0 +1,7 @@
+>>> Warning 203 "C:\Program Files\PICC\drivers\pic18_usb.c" Line 616(1,1): Condition always TRUE
+>>> Warning 216 "MainKey.c" Line 21(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_token_reset)
+>>> Warning 216 "MainKey.c" Line 21(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_tbe)
+>>> Warning 216 "MainKey.c" Line 21(0,1): Interrupts disabled during call to prevent re-entrancy:  (usb_cdc_flush_out_buffer)
+      Memory usage:   ROM=15%      RAM=21% - 24%
+      0 Errors,  4 Warnings.
+Build Successful.

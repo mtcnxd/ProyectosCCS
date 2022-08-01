@@ -1,0 +1,15 @@
+*** Error 18 "KeyboardLogout.c" Line 26(10,33): File can not be opened
+    Not in "C:\Program Files\PICC\devices\G-PiC KeyboardMouse.c"
+    Not in "C:\Program Files\PICC\drivers\G-PiC KeyboardMouse.c"
+    Not in "C:\Program Files\PICC\drivers\usb\G-PiC KeyboardMouse.c"
+    Not in project "D:\Electronica\Ejemplos G-PiC\Ejemplos G-PiC KeyboardMouse\KeyboardLogout\G-PiC KeyboardMouse.c"
+*** Error 12 "KeyboardLogout.c" Line 31(23,24): Undefined identifier  -- KeyboardMouse_begin
+*** Error 12 "KeyboardLogout.c" Line 35(24,25): Undefined identifier  -- keyboard_press
+*** Error 12 "KeyboardLogout.c" Line 36(24,25): Undefined identifier  -- keyboard_press
+*** Error 12 "KeyboardLogout.c" Line 37(24,25): Undefined identifier  -- keyboard_press
+*** Error 12 "KeyboardLogout.c" Line 39(29,30): Undefined identifier  -- keyboard_releaseAll
+*** Error 12 "KeyboardLogout.c" Line 43(24,25): Undefined identifier  -- keyboard_press
+*** Error 12 "KeyboardLogout.c" Line 44(24,25): Undefined identifier  -- keyboard_press
+*** Error 12 "KeyboardLogout.c" Line 45(29,30): Undefined identifier  -- keyboard_releaseAll
+      9 Errors,  0 Warnings.
+Build Failed.
